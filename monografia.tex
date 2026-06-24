@@ -1,0 +1,91 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{graphicx}
+\usepackage{tocloft}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+% Configuración general
+\setlength{\parindent}{1.5em}
+\onehalfspacing
+\setlength{\cftbeforesecskip}{6pt}
+\renewcommand{\contentsname}{Índice}
+
+% Colores personalizados
+\definecolor{azulnoche}{RGB}{0,40,90}
+\definecolor{celesteclaro}{RGB}{224,240,255}
+\definecolor{grisclaro}{RGB}{245,245,245}
+\definecolor{darkgreen}{rgb}{0.533, 0.486, 0.184}
+\definecolor{golden}{RGB}{197,160,89}
+\definecolor{goldford}{RGB}{143,113,54}
+\definecolor{rojo}{RGB}{166,25,46}
+
+\begin{document}
+
+% ==============================
+% PORTADA
+% ==============================
+\begin{titlepage}
+\centering
+{\normalsize\textbf{"Año de la Esperanza y el Fortalecimiento de la Democracia"}}\\
+\vspace{0.5cm}
+{\color{golden}\bfseries\large UNIVERSIDAD NACIONAL MAYOR DE SAN MARCOS}\\
+\vspace{0.1cm}
+{\color{golden}\large\textbf{(Universidad del Perú, Decana de América)}}\\
+\vspace{0.5cm}
+% Nota: Asegúrate de tener el archivo 'universidad-nacional-mayor-de-san-marcos-seeklogo.png' en tu proyecto de Overleaf
+\includegraphics[width=0.35\textwidth]{UNMSM_coatofarms_seal.svg.png}\\
+\vspace{0.5cm}
+{\color{goldford}\scshape\Large Facultad de Ingeniería de Sistemas e Informática\\}
+\vspace{0.5cm}
+\color{rojo}\hrule height 0.3mm\vspace{0.2cm}
+{\color{rojo}\Large\bfseries MONOGRAFÍA: COMPUTACIÓN CUÁNTICA\vspace{0.56cm}}\\
+\color{rojo}\hrule height 0.3mm\vspace{0.5cm}
+{\color{rojo}\Large\textbf{Curso:}}\\
+\vspace{0.1cm}
+{\color{goldford}\Large Introducción a la Computación}\\
+\vspace{0.3cm}
+{\color{rojo}\Large\textbf{Docente:}}\\
+\vspace{0.1cm}
+{\color{goldford}\Large Uscuchagua Flores, Gelber Christian}\\
+\vspace{0.3cm}
+{\color{rojo}\Large\textbf{Integrantes:}}\\
+\vspace{0.1cm}
+{\color{goldford}\large 
+Angeles, Gian Franco \\
+Eneque Roca, Jair Stefano \\
+Espinal Bazan, Sebastián Andres \\
+Fernandez Curas, Christian Jair \\
+}
+\vspace{1.5cm}
+{\color{goldford}\Large\textbf{LIMA - PERÚ}}\\
+\vspace{0.1cm}
+{\color{goldford}\Large\textbf{AÑO - 2026}}\\
+\end{titlepage}
+
+% ==============================
+% ÍNDICE
+% ==============================
+\tableofcontents
+\newpage
+
+% ==============================
+% CONTENIDO
+% ==============================
+
+% --- Sección 1 ---
+\section*{{\color{azulnoche}\textbf{\textit{1. Fundamentos: Del Bit Clásico al Qubit}}}}
+\addcontentsline{toc}{section}{1. Fundamentos: Del Bit Clásico al Qubit}
+% Aquí puedes comenzar a pegar la información de tu documento...
+
+\end{document}

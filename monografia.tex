@@ -9,19 +9,25 @@
 \usepackage{graphicx}
 \usepackage{tocloft}
 \usepackage{hyperref}
+\usepackage{float}
+
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
     urlcolor=blue
 }
 
-% Configuración general
+%==============================
+% CONFIGURACIÓN GENERAL
+%==============================
 \setlength{\parindent}{1.5em}
 \onehalfspacing
 \setlength{\cftbeforesecskip}{6pt}
 \renewcommand{\contentsname}{Índice}
 
-% Colores personalizados
+%==============================
+% COLORES
+%==============================
 \definecolor{azulnoche}{RGB}{0,40,90}
 \definecolor{celesteclaro}{RGB}{224,240,255}
 \definecolor{grisclaro}{RGB}{245,245,245}
@@ -29,6 +35,13 @@
 \definecolor{golden}{RGB}{197,160,89}
 \definecolor{goldford}{RGB}{143,113,54}
 \definecolor{rojo}{RGB}{166,25,46}
+
+%==============================
+% NUMERACIÓN PERSONALIZADA
+%==============================
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
 
 \begin{document}
 
@@ -39,38 +52,41 @@
 \centering
 {\normalsize\textbf{"Año de la Esperanza y el Fortalecimiento de la Democracia"}}\\
 \vspace{0.5cm}
+
 {\color{golden}\bfseries\large UNIVERSIDAD NACIONAL MAYOR DE SAN MARCOS}\\
 \vspace{0.1cm}
 {\color{golden}\large\textbf{(Universidad del Perú, Decana de América)}}\\
 \vspace{0.5cm}
-% Nota: Asegúrate de tener el archivo 'universidad-nacional-mayor-de-san-marcos-seeklogo.png' en tu proyecto de Overleaf
+
 \includegraphics[width=0.35\textwidth]{UNMSM_coatofarms_seal.svg.png}\\
 \vspace{0.5cm}
+
 {\color{goldford}\scshape\Large Facultad de Ingeniería de Sistemas e Informática\\}
 \vspace{0.5cm}
+
 \color{rojo}\hrule height 0.3mm\vspace{0.2cm}
 {\color{rojo}\Large\bfseries MONOGRAFÍA: COMPUTACIÓN CUÁNTICA\vspace{0.56cm}}\\
 \color{rojo}\hrule height 0.3mm\vspace{0.5cm}
+
 {\color{rojo}\Large\textbf{Curso:}}\\
-\vspace{0.1cm}
 {\color{goldford}\Large Introducción a la Computación}\\
+
 \vspace{0.3cm}
 {\color{rojo}\Large\textbf{Docente:}}\\
-\vspace{0.1cm}
 {\color{goldford}\Large Uscuchagua Flores, Gelber Christian}\\
+
 \vspace{0.3cm}
 {\color{rojo}\Large\textbf{Integrantes:}}\\
-\vspace{0.1cm}
 {\color{goldford}\large 
 Angeles, Gian Franco \\
 Eneque Roca, Jair Stefano \\
 Espinal Bazan, Sebastián Andres \\
 Fernandez Curas, Christian Jair \\
 }
+
 \vspace{1.5cm}
 {\color{goldford}\Large\textbf{LIMA - PERÚ}}\\
-\vspace{0.1cm}
-{\color{goldford}\Large\textbf{AÑO - 2026}}\\
+{\color{goldford}\Large\textbf{2026}}\\
 \end{titlepage}
 
 % ==============================
@@ -80,12 +96,97 @@ Fernandez Curas, Christian Jair \\
 \newpage
 
 % ==============================
-% CONTENIDO
+% I. INTRODUCCIÓN
 % ==============================
+\section{Introducción}
 
-% --- Sección 1 ---
-\section*{{\color{azulnoche}\textbf{\textit{1. Fundamentos: Del Bit Clásico al Qubit}}}}
-\addcontentsline{toc}{section}{1. Fundamentos: Del Bit Clásico al Qubit}
-% Aquí puedes comenzar a pegar la información de tu documento...
+% ==============================
+% II. DESARROLLO
+% ==============================
+\section{Desarrollo}
+
+%-------------------------------------------------
+\subsection{Capítulo I. Principios y Fundamentos de la Computación Cuántica}
+
+\subsubsection{Evolución de la computación clásica a la computación cuántica}
+La computación clásica, cuyas bases lógicas y teóricas fueron formalizadas por Alan Turing y otros investigadores en la década de 1930, se fundamenta en bits binarios que toman valores discretos de 0 o 1 y en operaciones lógicas ejecutadas por circuitos electrónicos basados en el álgebra de Boole. 
+Durante décadas, este paradigma guió el desarrollo informático bajo la premisa subyacente de que la computación es un proceso físico sujeto a leyes termodinámicas y naturales. No obstante, las limitaciones intrínsecas de los sistemas convencionales para simular sistemas de la física cuántica de manera eficiente se hicieron evidentes hacia finales del siglo XX.\\
+
+El surgimiento formal de la computación cuántica se atribuye a una célebre conferencia dictada por Richard Feynman en 1982, el cual imaginó teóricamente una máquina que pudiera imitar y simular de forma fidedigna la mecánica cuántica utilizando los propios principios de la física cuántica.
+Además, esta visión fue formalizada por David Deutsch en 1985 con el concepto de la Máquina de Turing Cuántica, demostrando que tales dispositivos podrían realizar tareas inalcanzables para los sistemas clásicos.
+Por lo cual, el impulso científico global hacia la construcción de este hardware se aceleró críticamente en 1994, cuando Peter Shor demostró matemáticamente que una computadora cuántica podría factorizar números enteros de forma eficiente, comprometiendo de manera directa los criptosistemas de clave pública modernos como la encriptación RSA.\\
+
+\begin{figure}[htbp]
+    \raggedright
+    {\bfseries Figura 1}\\
+    \textit{Línea de tiempo de la evolución histórica de la computación cuántica}\\
+    \vspace{0.3cm}
+    \centering
+    \includegraphics[width=0.85\textwidth]{linea_tiempo.png}\\
+    \vspace{0.3cm}
+    \raggedright\small
+    \textit{Nota.} Adaptado de \textit{A Brief History of Quantum Computing}, por Quantumpedia, 2020 (https://quantumpedia.uk/a-brief-history-of-quantum-computing-e0bbd05893d0).
+\end{figure}
+
+Como se puede apreciar en la Figura 1, la transición desde los fundamentos computacionales clásicos hasta la consolidación de la teoría cuántica no fue un evento aislado, sino una concatenación de hitos conceptuales. La cronología resalta cómo los desafíos teóricos planteados inicialmente por Feynman y Deutsch encontraron una aplicación crítica y disruptiva con el algoritmo de Shor. Este recorrido histórico demuestra que el paso del bit al qubit no solo representó una mejora en la velocidad de procesamiento, sino un cambio radical en las leyes físicas aplicadas a la teoría de la información, sentando las bases tecnológicas del hardware contemporáneo.
+
+\subsubsection{El qubit como unidad fundamental de información}
+Mientras que la arquitectura clásica procesa la información mediante el bit convencional, la computación cuántica introduce el bit cuántico o \textit{qubit} como su bloque elemental y unidad fundamental de información. Físicamente, un qubit se define como un sistema cuántico direccionable de dos niveles de energía.\\
+
+Matemáticamente, el estado puro de un qubit se modela como un vector de estado que reside dentro de un espacio de Hilbert complejo bidimensional. Haciendo uso de la notación bra-ket de Dirac, el estado general de un qubit, denotado como $|\psi\rangle$, se expresa formalmente a través de la combinación lineal de sus estados de base computacional, $|0\rangle$ y $|1\rangle$, definida por la ecuación:
+
+\begin{equation}
+    |\psi\rangle = \alpha |0\rangle + \beta |1\rangle
+\end{equation}
+
+donde $\alpha$ y $\beta$ son amplitudes de probabilidad complejas que cumplen la condición de normalización $|\alpha|^2 + |\beta|^2 = 1$. Esta propiedad permite que $n$ qubits representen simultáneamente $2^n$ valores posibles, expandiendo el espacio computacional (espacio de Hilbert) de manera exponencial. Físicamente, los qubits pueden implementarse mediante el espín de un electrón, la polarización de un fotón o estados de carga en circuitos superconductores.\\
+\begin{figure}[H]
+    \raggedright
+    {\bfseries Figura 2}\\
+    \textit{Representación geométrica de un qubit en la esfera de Bloch}\\
+    \vspace{0.3cm}
+    \centering
+    \includegraphics[width=0.45\textwidth]{Bloch.png}\\
+    \vspace{0.3cm}
+    \raggedright\small
+    \textit{Nota.} Tomado de \textit{Efficient Quantum Secure Vector Dominance and Its Applications in Computational Geometry}, por W. Liu, B. Su y F. Sun, 2025, \textit{IEEE Transactions on Computers}, 74(6), pp. 2129–2143 (https://doi.org/10.1109/TC.2025.3557968).
+\end{figure}
+
+Tal y como se puede visualizar en la Figura 2, la esfera de Bloch proporciona una abstracción geométrica indispensable para visualizar el estado de un qubit aislado dentro de un espacio tridimensional. Mientras que un bit clásico está limitado a los polos norte o sur de esta esfera (representando estrictamente los estados discretos $|0\rangle$ y $|1\rangle$), un qubit puede localizarse en cualquier punto sobre la superficie de la esfera. Los ángulos colatitud y longitud de la superficie parametrizan las amplitudes complejas $\alpha$ y $\beta$, lo que evidencia de forma visual cómo el principio de superposición permite la coexistencia e infinitas combinaciones de estados. Esta propiedad geométrica es fundamental para el diseño de algoritmos, ya que las operaciones lógicas cuánticas equivalen analíticamente a rotaciones controladas alrededor de los ejes de este espacio esférico.
+
+\subsubsection{Principios de la mecánica cuántica aplicados a la computación}
+\subsubsection{Puertas lógicas y circuitos cuánticos}
+\subsubsection{Tecnologías de hardware cuántico}
+\subsubsection{Estado actual del hardware cuántico}
+
+%-------------------------------------------------
+\subsection{Capítulo II.}
+
+\subsubsection{}
+
+
+%-------------------------------------------------
+\subsection{Capítulo III.}
+
+\subsubsection{}
+
+
+%-------------------------------------------------
+\subsection{Capítulo IV. }
+
+\subsubsection{}
+
+
+% ==============================
+% III. CONCLUSIONES
+% ==============================
+\section{Conclusiones}
+
+% ==============================
+% IV. REFERENCIAS
+% ==============================
+\section{Referencias}
 
 \end{document}
+
+```

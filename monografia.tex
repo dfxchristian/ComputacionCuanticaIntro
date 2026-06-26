@@ -155,8 +155,32 @@ donde $\alpha$ y $\beta$ son amplitudes de probabilidad complejas que cumplen la
 Tal y como se puede visualizar en la Figura 2, la esfera de Bloch proporciona una abstracción geométrica indispensable para visualizar el estado de un qubit aislado dentro de un espacio tridimensional. Mientras que un bit clásico está limitado a los polos norte o sur de esta esfera (representando estrictamente los estados discretos $|0\rangle$ y $|1\rangle$), un qubit puede localizarse en cualquier punto sobre la superficie de la esfera. Los ángulos colatitud y longitud de la superficie parametrizan las amplitudes complejas $\alpha$ y $\beta$, lo que evidencia de forma visual cómo el principio de superposición permite la coexistencia e infinitas combinaciones de estados. Esta propiedad geométrica es fundamental para el diseño de algoritmos, ya que las operaciones lógicas cuánticas equivalen analíticamente a rotaciones controladas alrededor de los ejes de este espacio esférico.
 
 \subsubsection{Principios de la mecánica cuántica aplicados a la computación}
+La ventaja de procesamiento radical que exhibe el paradigma cuántico sobre los enfoques digitales clásicos radica en la explotación directa de los postulados fundamentales de la mecánica cuántica. Los principios esenciales integrados en el procesamiento de información son los siguientes:
+
+\begin{itemize}
+    \item \textbf{Superposición cuántica:} Es la propiedad física que faculta a un sistema (como el qubit) para coexistir simultáneamente en múltiples estados combinados ($|0\rangle$ y $|1\rangle$) con amplitudes de probabilidad definidas, en lugar de verse confinado de forma exclusiva a una única alternativa binaria rígida.
+    \item \textbf{Entrelazamiento cuántico:} Fenómeno físico en el cual los estados cuánticos de dos o más partículas u objetos se vinculan de tal manera que el estado de uno de ellos no puede describirse de forma independiente del otro, sin importar la distancia física que los separe. El entrelazamiento genera correlaciones no locales masivas y un procesamiento en paralelo inalcanzable por medios convencionales.
+    \item \textbf{Interferencia:} Se utiliza en los algoritmos para amplificar las amplitudes de probabilidad de los resultados correctos y cancelar mediante interferencia destructiva los resultados erróneos.
+\end{itemize} 
+
+Un aspecto crítico es la medición, la cual colapsa el estado de superposición en un resultado determinista (0 o 1), destruyendo la información cuántica previa. Además, el teorema de no clonación prohíbe la creación de copias idénticas de un estado cuántico desconocido, lo que diferencia radicalmente la gestión de errores cuánticos de la clásica (Nasser, 2025, p.5).
+
 \subsubsection{Puertas lógicas y circuitos cuánticos}
+Las operaciones en computación cuántica se ejecutan mediante \textbf{puertas lógicas cuánticas}, que son transformaciones unitarias aplicadas a los qubits. A diferencia de las puertas clásicas, las cuánticas son inherentemente reversibles.\\
+
+Entre las puertas fundamentales se encuentran:
+\begin{itemize}
+    \item \textbf{Puerta Hadamard (H):} Crea superposición a partir de estados base.
+    \item \textbf{Puertas de Pauli (X, Y, Z):} Realizan rotaciones en la esfera de Bloch, como la puerta X que actúa como un \textit{NOT} cuántico.
+    \item \textbf{Puerta CNOT (Controlled-NOT):} Una puerta de dos qubits esencial para generar entrelazamiento.
+\end{itemize}
+
+Un circuito cuántico es una secuencia de estas puertas aplicadas a un estado inicial para realizar un cálculo específico. Asimismo, se ha demostrado que conjuntos pequeños de estas puertas son universales, lo que significa que cualquier operación unitaria puede aproximarse con precisión arbitraria mediante una secuencia finita de ellas (Madanan et al., 2023).
+
 \subsubsection{Tecnologías de hardware cuántico}
+La materialización física de un ordenador cuántico escalable requiere de un sistema tecnológico capaz de satisfacer rigurosamente los denominados criterios de DiVincenzo formalizados en el año 2000. 
+Dichos criterios exigen cinco directrices fundamentales para el procesamiento: (a) un sistema físico escalable con qubits bien caracterizados , (b) la capacidad de inicializar los estados de los qubits , (c) tiempos largos de coherencia cuántica , (d) un conjunto universal de compuertas cuánticas , y (e) la capacidad de realizar mediciones específicas en qubits individuales (He-Liang Huang et al., 2020).
+
 \subsubsection{Estado actual del hardware cuántico}
 
 %-------------------------------------------------

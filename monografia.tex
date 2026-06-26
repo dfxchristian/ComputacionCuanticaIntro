@@ -10,6 +10,7 @@
 \usepackage{tocloft}
 \usepackage{hyperref}
 \usepackage{float}
+\usepackage{hanging}
 
 \hypersetup{
     colorlinks=true,
@@ -112,7 +113,7 @@ Fernandez Curas, Christian Jair \\
 La computación clásica, cuyas bases lógicas y teóricas fueron formalizadas por Alan Turing y otros investigadores en la década de 1930, se fundamenta en bits binarios que toman valores discretos de 0 o 1 y en operaciones lógicas ejecutadas por circuitos electrónicos basados en el álgebra de Boole. 
 Durante décadas, este paradigma guió el desarrollo informático bajo la premisa subyacente de que la computación es un proceso físico sujeto a leyes termodinámicas y naturales. No obstante, las limitaciones intrínsecas de los sistemas convencionales para simular sistemas de la física cuántica de manera eficiente se hicieron evidentes hacia finales del siglo XX.\\
 
-El surgimiento formal de la computación cuántica se atribuye a una célebre conferencia dictada por Richard Feynman en 1982, el cual imaginó teóricamente una máquina que pudiera imitar y simular de forma fidedigna la mecánica cuántica utilizando los propios principios de la física cuántica.
+El surgimiento formal de la computación cuántica se atribuye a una célebre conferencia dictada por Richard Feynman en 1982, el cual imaginó teóricamente una máquina que pudiera imitar y simular de forma fidedigna la mecánica cuántica utilizando los propios principios de la física cuántica (Y. Ozhigov, 2023).
 Además, esta visión fue formalizada por David Deutsch en 1985 con el concepto de la Máquina de Turing Cuántica, demostrando que tales dispositivos podrían realizar tareas inalcanzables para los sistemas clásicos.
 Por lo cual, el impulso científico global hacia la construcción de este hardware se aceleró críticamente en 1994, cuando Peter Shor demostró matemáticamente que una computadora cuántica podría factorizar números enteros de forma eficiente, comprometiendo de manera directa los criptosistemas de clave pública modernos como la encriptación RSA.\\
 
@@ -180,9 +181,68 @@ Un circuito cuántico es una secuencia de estas puertas aplicadas a un estado in
 \subsubsection{Tecnologías de hardware cuántico}
 La materialización física de un ordenador cuántico escalable requiere de un sistema tecnológico capaz de satisfacer rigurosamente los denominados criterios de DiVincenzo formalizados en el año 2000. 
 Dichos criterios exigen cinco directrices fundamentales para el procesamiento: (a) un sistema físico escalable con qubits bien caracterizados , (b) la capacidad de inicializar los estados de los qubits , (c) tiempos largos de coherencia cuántica , (d) un conjunto universal de compuertas cuánticas , y (e) la capacidad de realizar mediciones específicas en qubits individuales (He-Liang Huang et al., 2020).
+Actualmente, en el siglo XXI, coexisten múltiples plataformas de hardware en desarrollo activo:
+
+\begin{itemize}
+    \item \textbf{Circuitos Superconductores:} Constituyen circuitos electrónicos de estado sólido fabricados mediante microtecnología semiconductora estándar. Operan manipulando grados de libertad como la carga, el flujo magnético o la fase cuántica a través de uniones Josephson. Ofrecen una gran facilidad de acoplamiento, alta flexibilidad de diseño y operaciones lógicas extremadamente rápidas, aunque demandan refrigeración extrema a temperaturas de entre 10 y 20 milikelvins mediante refrigeradores de dilución.
+    
+    \item \textbf{Iones Atrapados:} Utilizan átomos individuales cargados eléctricamente (iones) que son suspendidos y confinados en el vacío mediante campos electromagnéticos generados por trampas Paul de radiofrecuencia. La información se codifica en sus niveles hiperfinos y las operaciones lógicas se ejecutan mediante la aplicación dirigida de pulsos láser. Sobresalen por exhibir tiempos de coherencia significativamente prolongados.
+    
+    \item \textbf{Sistemas Fotónicos:} Emplean partículas individuales de luz (fotones) como qubits itinerantes manipulados por medio de componentes ópticos lineales (divisores de haz, guías de onda y desfasadores). Presentan una resistencia intrínseca casi total a la decoherencia térmica ambiental, pero afrontan la severa dificultad de lograr interacciones deterministas eficientes entre fotones independientes.
+    
+    \item \textbf{Qubits de Espín en Estado Sólido:} Codifican la información en el espín de electrones atrapados dentro de puntos cuánticos semiconductores o en defectos estructurales cristalinos, como los centros de vacante de nitrógeno (NV) en diamantes, ideales para arquitecturas híbridas de memoria cuántica.
+\end{itemize}
+
+Para ilustrar físicamente los esquemas fundamentales de los circuitos de estado sólido descritos, en la Figura 3 se presenta el diagrama conceptual de las tres tipologías básicas de qubits superconductores.
+
+\begin{figure}[H]
+    \raggedright
+    {\bfseries Figura 3}\\
+    \textit{Diagramas esquemáticos de las tres tipologías principales de qubits superconductores}\\
+    \vspace{0.3cm}
+    \centering
+    \includegraphics[width=0.85\textwidth]{esquema.png}\\
+    \vspace{0.3cm}
+    \raggedright\small
+    \textit{Nota.} (a) Qubit de carga compuesto por una unión Josephson (JJ) y un capacitor con voltaje de compuerta $V_g$. (b) Qubit de flujo que muestra la inductancia de lazo $L$ y el flujo de polarización $\Phi$. (c) Qubit de fase con corriente de polarización $I_b$. Tomado de \textit{Superconducting quantum computing: a review}, por H.-L. Huang, D. Wu, D. Fan et al., 2020, \textit{Science China Information Sciences}, 63, Artículo 180501 (https://doi.org/10.1007/s11432-020-2881-9).
+\end{figure}
+
+Como se detalla en la Figura 3, el comportamiento cuántico en estos circuitos superconductores se logra aislando diferentes variables macroscópicas a través del uso de uniones Josephson (representadas con una 'X'). En el qubit de carga (a), el estado se define mediante el número de pares de Cooper en la isla cuántica controlada por el voltaje $V_g$. Por otro lado, el qubit de flujo (b) opera basándose en la dirección de la corriente persistente y el flujo magnético $\Phi$ que atraviesa el lazo inductivo. Finalmente, el qubit de fase (c) aprovecha los niveles de energía cuántica oscilatorios dentro del pozo de potencial modificado por una corriente de polarización externa $I_b$. Esta diversidad en el diseño demuestra el alto grado de flexibilidad técnica que poseen las plataformas superconductoras para modelar sistemas artificiales de dos niveles de energía.
 
 \subsubsection{Estado actual del hardware cuántico}
+En este siglo XXI, nos encontramos en la era de los Sistemas Cuánticos de Escala Intermedia con Ruido (NISQ) . Estos dispositivos cuentan con entre 50 y unos pocos cientos de qubits, pero carecen de una corrección de errores completa, lo que limita la profundidad de los circuitos debido a la decoherencia y el ruido ambiental (Singh Gill et al., 2020).\\
 
+Un hito histórico fundamental dentro de esta etapa fue la demostración práctica de la supremacía cuántica en 2019 por parte de Google, cuyo procesador \textit{Sycamore} de 53 qubits ejecutó en un lapso de segundos una tarea de muestreo que le habría tomado milenios resolver a una supercomputadora convencional. En consecuencia, el desafío científico contemporáneo se centra en transicionar de esta supremacía teórica hacia una ventaja cuántica práctica orientada a la resolución de problemas del mundo real en campos altamente complejos como la criptografía, la ciencia de materiales y la optimización combinatoria.\\ 
+
+Con el fin de desarrollar sistemas comerciales a gran escala, los esfuerzos de investigación se dirigen prioritariamente hacia la implementación de códigos de corrección de errores cuánticos, tales como el código de superficie (\textit{surface code}), diseñados de forma específica para blindar y preservar la información en arquitecturas de hardware inherentemente ruidosas.
+
+\begin{figure}[H]
+    \raggedright
+    {\bfseries Figura 4}\\
+    \textit{Procesador cuántico superconductor de escala intermedia de la familia Google Quantum AI}\\
+    \vspace{0.3cm}
+    \centering
+    \includegraphics[width=0.45\textwidth]{chip.jpg}\\
+    \vspace{0.3cm}
+    \raggedright\small
+    \textit{Nota.} Vista macroscópica del empaquetamiento y líneas de acoplamiento de un chip cuántico superconductor diseñado para la ejecución de algoritmos a través de compuertas lógicas unitarias programables. Adaptado de \textit{Quantum Computer Datasheet: Weber}, por Google Quantum AI, s.f. (https://quantumai.google/hardware/datasheet/weber.pdf).
+\end{figure}
+
+Como se describió al analizar las exigencias de las plataformas superconductoras y los dispositivos de la era NISQ, estos procesadores requieren entornos térmicos extremadamente estables y fríos para operar. Para mantener la coherencia cuántica en los qubits y blindar el sistema frente a las interacciones disruptivas del entorno, se utilizan sistemas de criogenia altamente sofisticados conocidos como refrigeradores de dilución, cuya estructura interna se detalla en la Figura 5.
+
+\begin{figure}[H]
+    \raggedright
+    {\bfseries Figura 5}\\
+    \textit{Infraestructura interna de un refrigerador de dilución utilizado para la criogenia de hardware cuántico superconductor}\\
+    \vspace{0.3cm}
+    \centering
+    \includegraphics[width=0.45\textwidth]{refrigerador.jpg}\\
+    \vspace{0.3cm}
+    \raggedright\small
+    \textit{Nota.} Vista detallada de las placas de brida doradas y las etapas de enfriamiento progresivo que permiten aislar los sistemas del ruido térmico ambiental mediante temperaturas en el rango de los milikelvins. Tomado de \textit{Development of dilution refrigerators—A review}, por H. Zu, W. Dai y A. T. A. M. de Waele, 2022, \textit{Cryogenics}, 121, Artículo 103390 (https://doi.org/10.1016/j.cryogenics.2021.103390).
+\end{figure}
+
+El uso de los refrigeradores de dilución es indispensable debido a que la energía de los enlaces térmicos a temperatura ambiente destruiría instantáneamente los delicados estados de superposición y entrelazamiento de los circuitos. Mediante la mezcla controlada de los isótopos de helio-3 y helio-4, estas cámaras logran mitigar la agitación térmica de los electrones en los materiales superconductores, garantizando que las fluctuaciones del entorno físico exterior no interfieran con las operaciones unitarias programadas en los algoritmos del procesador.
 %-------------------------------------------------
 \subsection{Capítulo II.}
 
@@ -209,7 +269,19 @@ Dichos criterios exigen cinco directrices fundamentales para el procesamiento: (
 % ==============================
 % IV. REFERENCIAS
 % ==============================
-\section{Referencias}
+\section*{IV. Referencias}
+
+\begin{enumerate}
+    \item[{[1]}] Huang, H.-L., Wu, D., Fan, D., \& Zhu, X. (2020). Superconducting quantum computing: a review. \textit{Science China Information Sciences}, 63, Artículo 180501. https://doi.org/10.1007/s11432-020-2881-9
+    
+    \item[{[2]}] Madanan, M., et al. (2023). Exploring Quantum Computing’s Potential Breakthroughs and Challenges. \textit{International Journal on Recent and Innovation Trends in Computing and Communication}, 11(11), 674–679. https://doi.org/10.17762/ijritcc.v11i11.10070
+    
+    \item[{[3]}] Nasser, A. (2025). Quantum Computing: Foundational and Theoretical Models. \textit{Preprints}. https://doi.org/10.20944/preprints202507.2057.v1
+    
+    \item[{[4]}] Ozhigov, Y. I. (2022). Three principles of quantum computing. \textit{Quantum Information and Computation}, 22(15-16), 1280–1288. https://doi.org/10.26421/QIC22.15-16-2
+    
+    \item[{[5]}] Singh Gill, S., Cetinkaya, O., Marrone, S., Caudino, D., Haunschild, D., Schlote, L., Wu, H., Ottaviani, C., \& Liu, X. (2025). Quantum Computing: Vision and Challenges. En \textit{Quantum Computing} (pp. 19–42). Morgan Kaufmann Publishers. https://doi.org/10.1016/B978-0-443-29096-1.00008-8
+\end{enumerate}
 
 \end{document}
 

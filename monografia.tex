@@ -14,6 +14,7 @@
 \usepackage{listings}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage[nottoc]{tocbibind}
 \renewcommand{\lstlistingname}{Código}
 
 \lstset{
@@ -35,7 +36,8 @@
 }
 
 \hypersetup{
-    colorlinks=true,
+    colorlinks=false,
+    pdfborder={0 0 0},
     linkcolor=blue,
     urlcolor=blue
 }
@@ -47,6 +49,8 @@
 \onehalfspacing
 \setlength{\cftbeforesecskip}{6pt}
 \renewcommand{\contentsname}{Índice}
+
+\setlength{\cftsecnumwidth}{3.2em}
 
 %==============================
 % COLORES
@@ -62,7 +66,7 @@
 %==============================
 % NUMERACIÓN PERSONALIZADA
 %==============================
-\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesection}{\Roman{section}.}
 \renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
 \renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
 
@@ -116,11 +120,13 @@ Fernandez Curas, Christian Jair \\
 % ÍNDICE
 % ==============================
 \tableofcontents
+\thispagestyle{empty} 
 \newpage
 
 % ==============================
 % I. INTRODUCCIÓN
 % ==============================
+\setcounter{page}{1} 
 \section{Introducción}
 
 % ==============================
@@ -584,10 +590,13 @@ La implementación se estructura bajo un diseño tolerante a fallos que opera en
 % ==============================
 \section{Conclusiones}
 
+\newpage
 % ==============================
 % IV. REFERENCIAS
 % ==============================
-\section*{IV. Referencias}
+\par\vspace{0.3cm}
+\section{Referencias Bibliográficas}
+
 
 \begin{enumerate}
     \item[{[1]}] Huang, H.-L., Wu, D., Fan, D., \& Zhu, X. (2020). Superconducting quantum computing: a review. \textit{Science China Information Sciences}, 63, Artículo 180501. https://doi.org/10.1007/s11432-020-2881-9
@@ -607,6 +616,10 @@ La implementación se estructura bajo un diseño tolerante a fallos que opera en
 
     \item[{[9]}] Lov K. Grover.(1996). \textit{A fast quantum mechanical algorithm for database search.}Cornell University. \textit{}https://doi.org/10.48550/arXiv.quant-ph/9605043
 \end{enumerate}
+
+\newpage
+\section*{Anexos}
+\addcontentsline{toc}{section}{\hspace*{\cftsecnumwidth}Anexos}
 
 \end{document}
 

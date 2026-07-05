@@ -14,7 +14,6 @@
 \usepackage{listings}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage[nottoc]{tocbibind}
 \renewcommand{\lstlistingname}{Código}
 
 \lstset{
@@ -36,8 +35,7 @@
 }
 
 \hypersetup{
-    colorlinks=false,
-    pdfborder={0 0 0},
+    colorlinks=true,
     linkcolor=blue,
     urlcolor=blue
 }
@@ -50,8 +48,6 @@
 \setlength{\cftbeforesecskip}{6pt}
 \renewcommand{\contentsname}{Índice}
 
-\setlength{\cftsecnumwidth}{3.2em}
-\renewcommand{\cftsecdotsep}{4.5}
 %==============================
 % COLORES
 %==============================
@@ -66,7 +62,7 @@
 %==============================
 % NUMERACIÓN PERSONALIZADA
 %==============================
-\renewcommand{\thesection}{\Roman{section}.}
+\renewcommand{\thesection}{\Roman{section}}
 \renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
 \renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
 
@@ -120,13 +116,11 @@ Fernandez Curas, Christian Jair \\
 % ÍNDICE
 % ==============================
 \tableofcontents
-\thispagestyle{empty} 
 \newpage
 
 % ==============================
 % I. INTRODUCCIÓN
 % ==============================
-\setcounter{page}{1} 
 \section{Introducción}
 
 % ==============================
@@ -288,42 +282,33 @@ El uso de los refrigeradores de dilución es indispensable debido a que la energ
 % Aquí irá el contraste entre potencias mundiales (EE. UU., China, Europa) y la democratización vía Cloud Computing en Perú.
 
 %-------------------------------------------------
-\subsection{Capítulo III. Lógica Cuántica, Programación y Simuladores}
+\subsection{Capítulo III. Algoritmia Cuántica, Entornos de Desarrollo e Implementación Híbrida}
+\subsubsection{Simuladores Cuánticos y Entornos de Desarrollo: El Ecosistema IBM Quantum}
+La programación cuántica difiere del paradigma tradicional al sustituir las operaciones lógicas de asignación binaria discreta por la evolución unitaria de vectores de estado en espacios complejos. Para manipular la información contenida en los qubits, se diseñan circuitos basados en compuertas cuánticas elementales representadas matemáticamente por matrices unitarias continuas. Debido a que el hardware físico contemporáneo de la era de los sistemas cuánticos de escala intermedia con ruido presenta altas tasas de error por la agitación térmica y la decoherencia cuántica, la comunidad científica depende estrictamente de simuladores cuánticos ejecutados en hardware clásico. Actualmente, el mercado tecnológico ofrece diversas plataformas competitivas, tales como el Quantum Development Kit de Microsoft, Cirq de Google o Braket de Amazon. Sin embargo, la adopción del ecosistema de IBM Quantum y su framework de código abierto Qiskit se ha posicionado como el estándar de la industria y la academia.\\
 
-\subsubsection{Lógica Cuántica}
-
-\subsubsection{Implementación Práctica: API Cuántica con Qiskit y FastAPI}
-
-Para demostrar la viabilidad técnica de la computación cuántica en arquitecturas de software modernas, se ha desarrollado un \textit{backend} utilizando el framework FastAPI en Python, integrado con el SDK Qiskit de IBM. Esta arquitectura permite la ejecución de rutinas cuánticas bajo demanda, delegando el procesamiento pesado a las Unidades de Procesamiento Cuántico (QPU) de IBM Cloud o, en su defecto, a simuladores locales.
+La selección del entorno de IBM para el desarrollo del orquestador cuántico en este proyecto se fundamenta en tres ventajas arquitectónicas críticas. En primer lugar, la accesibilidad y democratización mediante el esquema de computación en la nube permite el acceso remoto a computadoras cuánticas físicas reales, eliminando las barreras de infraestructura y facilitando la investigación en el Perú sin necesidad de poseer hardware local. En segundo lugar, la emulación precisa de ruido provista por la librería AerSimulator faculta el modelado del comportamiento ideal de un circuito y la inyección de patrones de agitación térmica para mitigar errores antes de la ejecución real. En tercer lugar, la orquestación híbrida a través de Qiskit Runtime permite entrelazar dinámicamente recursos clásicos en Python con rutinas de procesamiento cuántico pesado dentro de una sesión dedicada, disminuyendo críticamente la latencia de cola. Gracias a este ecosistema, los ingenieros de software pueden modelar, depurar y validar sus circuitos de manera local antes de delegar la compilación definitiva.
 
 \subsubsection{Fundamento teórico de los algoritmos implementados}
-El sistema está diseñado para orquestar la ejecución de tres de los algoritmos más representativos de la ventaja cuántica:
+El sistema desarrollado está diseñado para orquestar la ejecución de tres de los algoritmos más representativos de la ventaja cuántica, estructurados en un catálogo de casos de estudio dentro del orquestador. 
 
-\begin{itemize}
-    \item \textbf{Algoritmo de Grover (Búsqueda no estructurada):} En la computación clásica, buscar un elemento en una base de datos no estructurada de $N$ elementos requiere una complejidad temporal de $\mathcal{O}(N)$. El algoritmo de Grover utiliza la inversión sobre la media (operador de difusión) para amplificar la amplitud de probabilidad del estado correcto, reduciendo la complejidad a $\mathcal{O}(\sqrt{N})$. Matemáticamente, su ejecución sigue esta secuencia formal:
-    
-    \begin{enumerate}
-        \item \textbf{Inicialización:} El sistema se prepara en una superposición uniforme de todos los estados posibles:
-        $$|s\rangle = \frac{1}{\sqrt{N}}\sum_{x=0}^{N-1}|x\rangle$$
-        
-        \item \textbf{Iteración de Grover:} Se aplica la siguiente subrutina $r(N)$ veces. Primero, un operador Oráculo ($U_\omega$) marca el estado buscado invirtiendo su fase. Luego, se aplica el operador de difusión de Grover ($U_s$), el cual realiza la inversión sobre la media y está definido como:
-        $$U_s = 2|s\rangle\langle s| - I$$
-        
-        \item \textbf{Medición:} Se mide el estado cuántico resultante en la base computacional. El análisis demuestra que, para garantizar que la probabilidad de obtener la respuesta correcta $|\omega\rangle$ se acerque a 1 (cuando $N \gg 1$), el número óptimo de iteraciones debe cumplir con:
-        $$r(N) \leq \left\lceil\frac{\pi}{4}\sqrt{N}\right\rceil$$
-    \end{enumerate}
+El primer pilar lo constituye el Algoritmo de Grover, enfocado en la búsqueda no estructurada. En la computación clásica, localizar un elemento en una base de datos de tamaño $N$ requiere una complejidad temporal de $\mathcal{O}(N)$, mientras que el enfoque cuántico reduce este coste a $\mathcal{O}(\sqrt{N})$ mediante la inversión sobre la media para amplificar la amplitud del estado correcto. Su ejecución matemática inicia con la preparación del sistema en una superposición uniforme de todos los estados posibles, expresada mediante la ecuación:
+$$|s\rangle = \frac{1}{\sqrt{N}}\sum_{x=0}^{N-1}|x\rangle$$
+Posteriormente, se aplica una secuencia repetitiva donde un operador oráculo invierte la fase del estado objetivo y un operador de difusión de Grover ejecuta la inversión matricial definida como $U_s = 2|s\rangle\langle s| - I$. Este ciclo se reitera un número óptimo de veces acotado por la expresión $r(N) \leq \lceil \frac{\pi}{4}\sqrt{N} \rceil$ antes de proceder con la medición final en la base computacional.
+
 \begin{figure}[H]
-        \raggedright
-        {\bfseries Figura 6}\\
-        \textit{Representación del Algoritmo de Grover en un Circuito Cuántico}\\
-        \vspace{0.3cm}
-        \centering
-        \includegraphics[width=0.85\textwidth]{Grover1.jpg}\\
-        \vspace{0.3cm}
-        \raggedright\small
-        \textit{Nota.} Esquema representativo de las iteraciones de oráculo y difusión en un circuito. Adaptado de "A fast quantum mechanical algorithm for database search".
-    \end{figure}
-    Para ilustrar estos conceptos matemáticos en nuestra implementación práctica, se ha desarrollado un \textit{Ansatz} (circuito base) de 3 qubits que representa la lógica de Grover en el \textbf{Caso 0} de la API. A continuación, se presenta el fragmento de código que combina el procesamiento cuántico en Qiskit con la extracción clásica de datos:
+    \raggedright
+    {\bfseries Figura 6}\\
+    \textit{Representación del Algoritmo de Grover en un Circuito Cuántico}\\
+    \vspace{0.3cm}
+    \centering
+    \includegraphics[width=0.85\textwidth]{Grover1.jpg}\\
+    \vspace{0.3cm}
+    \raggedright\small
+    \textit{Nota.} Esquema representativo de las iteraciones de oráculo y difusión en un circuito. Adaptado de "A fast quantum mechanical algorithm for database search".
+\end{figure}
+
+Para ilustrar estos conceptos matemáticos en nuestra implementación práctica, se ha desarrollado un circuito base de 3 qubits que representa la lógica de Grover en el Caso 0 de la API. A continuación, se presenta el fragmento de código que combina el procesamiento cuántico en Qiskit con la extracción clásica de datos:
+
 \begin{lstlisting}[caption={Ansatz de Grover y extracción híbrida en Python}]
 # Caso 0: Grover (Busqueda en base de datos CSV)
 if req.case_id == 0:
@@ -350,40 +335,26 @@ if req.case_id == 0:
                         break
 \end{lstlisting}
 
-    \textbf{Análisis del código en el contexto de Grover:} La implementación refleja un enfoque híbrido cuántico-clásico. En las primeras líneas, el circuito (\texttt{qc}) aplica compuertas de Hadamard (\texttt{qc.h}) a todos los registros, cumpliendo la etapa de \textbf{Inicialización} teórica. Posteriormente, se aplica una compuerta controlada Z (\texttt{qc.cz}) que actúa como el \textbf{Oráculo}, marcando el estado. El segundo bloque de compuertas Hadamard inicia la \textbf{Difusión} para amplificar la probabilidad del estado marcado.\\
-    
-    Una vez que la Unidad de Procesamiento Cuántico (QPU) de IBM colapsa el estado mediante la medición y devuelve el resultado como \texttt{req.target\_index}, el algoritmo transiciona a la lógica clásica en Python. El sistema utiliza dicho índice cuántico para buscar y extraer información directamente en una base de datos real (el archivo \texttt{usuarios\_masivos.csv}), validando empíricamente cómo el cálculo probabilístico acelera la búsqueda.
-    
-    A nivel de diseño de circuitos, la implementación de estos pasos exige una cantidad de compuertas lógicas lineal respecto al número de qubits, lo que resulta en una complejidad de $\mathcal{O}(\log N)$ por iteración. 
-    
-    
-\item \textbf{Algoritmo de Shor (Factorización y Criptografía):} Este algoritmo representa una amenaza crítica para la ciberseguridad actual al resolver el problema de la factorización de números enteros en tiempo polinómico $\mathcal{O}((\log N)^3)$, una tarea que exige tiempo exponencial $\mathcal{O}\left(e^{c(\log N)^{1/3}(\log \log N)^{2/3}}\right)$ en sistemas clásicos. Matemáticamente, el algoritmo reduce la factorización a un problema de búsqueda de periodos mediante la siguiente secuencia formal:
-    
-    \begin{enumerate}
-        \item \textbf{Reducción clásica:} Para factorizar un número $N$, se elige un entero aleatorio $a < N$ coprimo con $N$. Si el máximo común divisor $\gcd(a, N) > 1$, se ha encontrado un factor trivial. En caso contrario, se define la función modular $f(x) = a^x \pmod N$ y se busca su periodo $r$.
-        
-        \item \textbf{Búsqueda Cuántica de Periodo:} El sistema se inicializa en una superposición de estados $|x\rangle|0\rangle$. Se aplica el operador de exponenciación modular $U_a$, entrelazando los registros:
-        $$U_a|x\rangle|0\rangle = |x\rangle|a^x \pmod N\rangle$$
-        A continuación, se aplica la Transformada de Fourier Cuántica (QFT) al primer registro para revelar las frecuencias constructivas, transformando el estado a:
-        $$|x\rangle \xrightarrow{QFT} \frac{1}{\sqrt{Q}}\sum_{y=0}^{Q-1} e^{2\pi i \frac{xy}{Q}}|y\rangle$$
-        
-        \item \textbf{Extracción del factor:} La medición del primer registro colapsa el estado en un valor cercano a $y \approx c \frac{Q}{r}$. Mediante fracciones continuas se deduce el periodo $r$. Si $r$ es par, los factores primos $p$ y $q$ de $N$ se calculan clásicamente como:
-        $$\gcd(a^{r/2} \pm 1, N)$$
-    \end{enumerate}
-\begin{figure}[H]
-        \raggedright
-        {\bfseries Figura 7}\\
-        \textit{Arquitectura del Circuito Cuántico para el Algoritmo de Shor}\\
-        \vspace{0.3cm}
-        \centering
-        \includegraphics[width=0.85\textwidth]{Shor_circuit.png}\\
-        \vspace{0.3cm}
-        \raggedright\small
-        \textit{Nota.} Diagrama esquemático que ilustra los registros de inicialización, la compuerta de exponenciación modular ($U_a$) y la Transformada de Fourier Cuántica inversa (QFT$^\dagger$). Adaptado de "Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer".
-    \end{figure}    
-    Dado que los dispositivos NISQ actuales carecen del volumen de qubits lógicos necesarios para aplicar la QFT sobre claves RSA reales, en nuestra implementación de la API (Caso 1) se emplea un enfoque de emulación funcional. El circuito cuántico prepara el estado base (\textit{Ansatz}), mientras que el backend clásico simula la extracción de los factores hallados por la rutina cuántica para quebrar la clave privada.
+La implementación refleja un enfoque híbrido cuántico-clásico. En las primeras líneas, el circuito aplica compuertas de Hadamard a todos los registros, cumpliendo la etapa de inicialización teórica. Posteriormente, se aplica una compuerta controlada Z que actúa como el oráculo, marcando el estado. El segundo bloque de compuertas Hadamard inicia la difusión para amplificar la probabilidad del estado marcado. Una vez que la Unidad de Procesamiento Cuántico de IBM colapsa el estado mediante la medición y devuelve el resultado, el algoritmo transiciona a la lógica clásica en Python. El sistema utiliza dicho índice cuántico para buscar y extraer información directamente en una base de datos real (el archivo usuarios\_masivos.csv), validando empíricamente cómo el cálculo probabilístico acelera la búsqueda. A nivel de diseño de circuitos, la implementación de estos pasos exige una cantidad de compuertas lógicas lineal respecto al número de qubits, lo que resulta en una complejidad de $\mathcal{O}(\log N)$ por iteración.\\
 
-    
+El segundo pilar está definido por el Algoritmo de Shor, enfocado en la factorización matemática y el criptoanálisis. Este esquema resuelve la descomposición de números enteros gigantes en factores primos en tiempo polinómico $\mathcal{O}((\log N)^3)$, quebrando esquemas de clave pública como RSA que dependen de la intratabilidad clásica exponencial del problema. El proceso inicia con una reducción clásica que elige un entero aleatorio coprimo con $N$ para estructurar la función modular $f(x) = a^x \pmod N$. La búsqueda cuántica del periodo $r$ de dicha función constituye el núcleo del algoritmo, donde un operador de exponenciación modular entrelaza los registros en el estado $|x\rangle|a^x \pmod N\rangle$, seguido por la aplicación de la Transformada de Fourier Cuántica para revelar las frecuencias periódicas mediante la expresión:
+$$|x\rangle \xrightarrow{QFT} \frac{1}{\sqrt{Q}}\sum_{y=0}^{Q-1} e^{2\pi i \frac{xy}{Q}}|y\rangle$$
+La medición colapsa el sistema en un valor que permite deducir el periodo mediante fracciones continuas, calculando finalmente los factores primos clásicamente con el máximo común divisor $\gcd(a^{r/2} \pm 1, N)$.
+
+\begin{figure}[H]
+    \raggedright
+    {\bfseries Figura 7}\\
+    \textit{Arquitectura del Circuito Cuántico para el Algoritmo de Shor}\\
+    \vspace{0.3cm}
+    \centering
+    \includegraphics[width=0.85\textwidth]{Shor_circuit.png}\\
+    \vspace{0.3cm}
+    \raggedright\small
+    \textit{Nota.} Diagrama esquemático que ilustra los registros de inicialización, la compuerta de exponenciación modular y la Transformada de Fourier Cuántica inversa. Adaptado de "Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer".
+\end{figure}
+
+Dado que los dispositivos ruidosos actuales carecen del volumen de qubits lógicos necesarios para aplicar la Transformada de Fourier Cuántica sobre claves reales, en nuestra implementación de la API (Caso 1) se emplea un enfoque de emulación funcional. El circuito cuántico prepara el estado base, mientras que el backend clásico simula la extracción de los factores hallados por la rutina para ejecutar el quiebre criptográfico.
+
 \begin{lstlisting}[caption={Orquestación del Algoritmo de Shor y Ataque RSA}]
 # Funcion auxiliar: Simulacion de la extraccion de periodo (Factores p y q)
 def simular_shor_factorizacion(n):
@@ -419,11 +390,62 @@ elif req.case_id == 1:
             print("[OK] Mensaje desencriptado exitosamente.")
 \end{lstlisting}
 
-    \textbf{Análisis de la vulnerabilidad asimétrica:} El código presentado demuestra la debilidad estructural de la criptografía asimétrica. Al obtener los factores $p$ y $q$ (proceso simulado en la función \texttt{simular\_shor\_factorizacion}), el orquestador es capaz de calcular la función totiente de Euler $\phi(N) = (p-1)(q-1)$. Con este valor, se deriva la clave privada $d$ mediante el inverso multiplicativo modular del exponente público $e$. Finalmente, el mensaje encriptado $C$ es revertido a su texto plano iterando $M = C^d \pmod N$, lo que evidencia la necesidad urgente de transicionar hacia estándares postcuánticos.
+El análisis de la rutina evidencia la vulnerabilidad estructural de la criptografía asimétrica. Al obtener los factores primos mediante el procedimiento simulado en la función dedicada, el orquestador es capaz de derivar la función totiente de Euler $\phi(N) = (p-1)(q-1)$ y calcular la clave privada $d$ mediante el inverso multiplicativo modular del exponente público. La reversión final del criptograma confirma la fragilidad de los sistemas tradicionales frente al cómputo cuántico.\\
+
+El tercer pilar lo compone el Algoritmo de Optimización Aproximada Cuántica, diseñado como un enfoque iterativo híbrido para resolver problemas combinatorios de alta complejidad en la era de los procesadores con ruido ambiental, modelando escenarios como el problema del corte máximo o el Problema del Viajante. El problema clásico se expresa originalmente como una optimización binaria donde cada nodo toma una variable discreta, buscando maximizar las conexiones que cruzan la partición mediante la función:
+$$\max_{x \in \{0,1\}^n} \sum_{(i,j)} x_i + x_j - 2x_ix_j$$
+Este modelo se traduce a una optimización binaria cuadrática no restringida de la forma $\min x^T Q x$ y, mediante la sustitución matemática de variables $x_i \to (1-Z_i)/2$, se mapea de forma directa a un Hamiltoniano de coste basado en operadores espín de Pauli $Z$:
+$$H_C = \sum_{ij} Q_{ij} Z_i Z_j + \sum_i b_i Z_i$$
+Para grafos no pesados, los coeficientes lineales se anulan, fijando la función objetivo. El circuito prepara los estados aplicando capas alternadas de un operador de coste $e^{-i\gamma_k H_C}$ y un operador mezclador $e^{-i\beta_k H_m}$ sobre un estado inicial de superposición uniforme, estructurando analíticamente la ecuación de evolución unitaria:
+$$|\psi(\boldsymbol{\gamma}, \boldsymbol{\beta})\rangle = \prod_{k=1}^{p} e^{-i\beta_k H_m} e^{-i\gamma_k H_C} |s\rangle$$
+Finalmente, el sistema mide el estado para evaluar el coste esperado y delega los resultados a un optimizador clásico encargado de actualizar los ángulos en un bucle de retroalimentación cerrado dentro de una sesión de Qiskit Runtime.
+
+\begin{figure}[H]
+    \raggedright
+    {\bfseries Figura 8}\\
+    \textit{Estructura de Capas Alternadas en el Algoritmo QAOA}\\
+    \vspace{0.3cm}
+    \centering
+    \includegraphics[width=0.85\textwidth]{QAOA.png}\\
+    \vspace{0.3cm}
+    \raggedright\small
+    \textit{Nota.} Diagrama esquemático que ilustra la aplicación secuencial de los operadores de coste y mezcla sobre el estado inicial de superposición. Adaptado de la documentación oficial de Qiskit sobre optimización aproximada.
+\end{figure}
+
+En nuestra implementación correspondiente al Caso 2 de la API, se prepara la estructura base del circuito para la evaluación de rutas logísticas. A continuación, se detalla el fragmento de código que define el Ansatz y gestiona la ejecución en el hardware real:
+
+\begin{lstlisting}[caption={Preparación del Ansatz QAOA y orquestación híbrida}]
+# Caso 2: QAOA (Optimizacion TSP)
+elif req.case_id == 2:
+    # 1. Aplicacion de rotaciones parametrizadas y entrelazamiento
+    qc.rx(math.pi/2, [0, 1, 2])
+    qc.cx(0, 1)
+    qc.cx(0, 1)
+    algoritmo = "QAOA"
+
+# 2. Medicion del estado resultante
+qc.measure([0, 1, 2], [0, 1, 2])
+
+# 3. Ejecucion en IBM Cloud (Bucle hibrido)
+try:
+    print("[WAIT] Conectando con IBM Cloud...")
+    service = QiskitRuntimeService(channel="ibm_cloud", token=API_KEY_CLOUD, instance=CRN_INSTANCIA)
+    backend_real = service.least_busy(operational=True, simulator=False)
     
+    pm = generate_preset_pass_manager(backend=backend_real, optimization_level=1)
+    circuito_isa = pm.run(qc)
     
-    \item \textbf{QAOA (Problema del Viajante - TSP):} El Algoritmo de Optimización Aproximada Cuántica (QAOA) es un enfoque híbrido diseñado para resolver problemas de optimización combinatoria en hardware NISQ (dispositivos ruidosos a corto plazo). Funciona alternando dos Hamiltonianos: uno de coste $H_C$ (que codifica el problema) y uno mezclador $H_B$, parametrizados por variables clásicas $\gamma$ y $\beta$. El Caso 2 prepara el Ansatz para optimizar rutas logísticas y medir los estados resultantes.
-\end{itemize}
+    sampler = Sampler(mode=backend_real)
+    job = sampler.run([circuito_isa])
+    conteos = job.result()[0].data.c.get_counts()
+    estado_final = max(conteos, key=conteos.get)
+    print(f"[OK] Estado optimo hallado: {estado_final}")
+\end{lstlisting}
+
+El análisis de la arquitectura híbrida ilustra la sinergia que define al algoritmo. El framework clásico en Python actúa como el coordinador principal, configurando un circuito con rotaciones en el eje X y compuertas de entrelazamiento condicionado CNOT para mapear los parámetros. Al despacharse el trabajo a la infraestructura física de IBM Quantum, el procesador evalúa simultáneamente las combinaciones probabilísticas y devuelve el histograma de distribución, aislando la cadena binaria óptima mediante una función clásica de selección de máximos.
+
+\subsubsection{Implementación Práctica: API Cuántica con Qiskit y FastAPI}
+Para demostrar la viabilidad técnica de la computación cuántica en arquitecturas de software modernas, se ha desarrollado un \textit{backend} utilizando el framework FastAPI en Python, integrado con el SDK Qiskit de IBM. Esta arquitectura permite la ejecución de rutinas cuánticas bajo demanda, delegando el procesamiento pesado a las Unidades de Procesamiento Cuántico (QPU) de IBM Cloud o, en su defecto, a simuladores locales.
 
 \subsubsection{Código fuente del orquestador cuántico}
 A continuación, se detalla el código fuente del microservicio encargado de enrutar las peticiones al hardware de IBM:
@@ -562,17 +584,11 @@ async def ejecutar_caso(req: CasoRequest):
 \end{lstlisting}
 
 \subsubsection{Análisis de la Arquitectura y Ejecución}
-La implementación se estructura bajo un diseño tolerante a fallos que opera en las siguientes etapas:
+La implementación se estructura bajo un diseño tolerante a fallos que opera en cinco etapas secuenciales perfectamente integradas. 
 
-\begin{enumerate}
-    \item \textbf{Capa de Abstracción API:} Mediante \textit{FastAPI} y los modelos de validación de datos de \textit{Pydantic}, se establece una interfaz RESTful que recibe los parámetros de entrada (como las claves públicas RSA o los índices de búsqueda) de forma estructurada.
-    \item \textbf{Construcción del Circuito Cuántico:} Utilizando \textit{QuantumCircuit} de Qiskit, se definen las instrucciones del algoritmo seleccionado (compuertas Hadamard para la superposición de estados y compuertas controladas CNOT o CZ para el entrelazamiento).
-    \item \textbf{Enrutamiento dinámico (IBM Cloud):} El sistema utiliza la clase \textit{QiskitRuntimeService} para autenticarse en el servidor de IBM y busca la unidad de procesamiento físico que tenga menor carga de trabajo (\textit{least\_busy(operational=True)}).
-    \item \textbf{Transpilación:} Antes de enviar el circuito a la máquina, se utiliza un \textit{Pass Manager} para adaptar (\textit{transpilar}) las compuertas lógicas ideales al conjunto de instrucciones nativas (ISA) soportado físicamente por la topología específica del procesador de IBM seleccionado.
-    \item \textbf{Mecanismo de Degradación Elegante (Fallback):} Dado que los procesadores físicos en la nube dependen de colas de espera y disponibilidad de red, el bloque \textit{try-except} garantiza que, frente a un error de conexión (timeout o tokens agotados), la ejecución conmute automáticamente hacia \textit{AerSimulator}, un simulador cuántico local de alto rendimiento.
-\end{enumerate}
+En primer lugar, se establece la capa de abstracción de la API mediante el uso del framework FastAPI y los modelos de validación estructural de Pydantic, configurando una interfaz RESTful capaz de admitir parámetros clásicos de entrada de forma tipada. En segundo lugar, se ejecuta la construcción dinámica del circuito cuántico en memoria empleando la clase QuantumCircuit de Qiskit, aplicando las instrucciones unitarias correspondientes a las transformaciones lógicas deseadas. En tercer lugar, se activa el enrutamiento hacia la nube de IBM Cloud a través del servicio QiskitRuntimeService, autenticando las credenciales y aislando el coprocesador físico de hardware que certifique la menor cola de peticiones activas.\\
 
-%-------------------------------------------------
+En cuarto lugar, el sistema procesa la transpilación del circuito abstracto mediante un gestor de pases preestablecido, descomponiendo y adaptando las compuertas ideales a la topología nativa de emparejamiento físico del chip cuántico seleccionado. En quinto lugar, se despliega un mecanismo de degradación elegante gobernado por un bloque de control de excepciones, el cual conmuta la orquestación automáticamente hacia el entorno de simulación local AerSimulator ante cualquier interrupción de red o saturación de tokens en la plataforma externa, asegurando la continuidad del servicio de software.%-------------------------------------------------
 \subsection{Capítulo IV. Implicaciones Multidisciplinarias}
 
 \subsubsection{El cambio de paradigma filosófico y el fin del determinismo}
@@ -590,13 +606,10 @@ La implementación se estructura bajo un diseño tolerante a fallos que opera en
 % ==============================
 \section{Conclusiones}
 
-\newpage
 % ==============================
 % IV. REFERENCIAS
 % ==============================
-\par\vspace{0.3cm}
-\section{Referencias Bibliográficas}
-
+\section*{IV. Referencias}
 
 \begin{enumerate}
     \item[{[1]}] Huang, H.-L., Wu, D., Fan, D., \& Zhu, X. (2020). Superconducting quantum computing: a review. \textit{Science China Information Sciences}, 63, Artículo 180501. https://doi.org/10.1007/s11432-020-2881-9
@@ -616,10 +629,6 @@ La implementación se estructura bajo un diseño tolerante a fallos que opera en
 
     \item[{[9]}] Lov K. Grover.(1996). \textit{A fast quantum mechanical algorithm for database search.}Cornell University. \textit{}https://doi.org/10.48550/arXiv.quant-ph/9605043
 \end{enumerate}
-
-\newpage
-\section{Anexos}
-
 
 \end{document}
 

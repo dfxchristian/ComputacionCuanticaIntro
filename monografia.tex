@@ -271,6 +271,30 @@ El uso de los refrigeradores de dilución es indispensable debido a que la energ
 
 \subsubsection{Ciberseguridad y la amenaza cuántica}
 % Aquí irá el texto sobre la estrategia "Harvest Now, Decrypt Later" y el algoritmo de Shor rompiendo RSA.
+La ciberseguridad es uno de los ámbitos donde la computación cuántica tendrá un mayor impacto. Actualmente, la protección de la información en internet depende de sistemas criptográficos que garantizan la confidencialidad de los datos; sin embargo, el avance de la computación cuántica plantea un cambio de paradigma, ya que su capacidad para resolver determinados problemas matemáticos con mayor rapidez podría comprometer los algoritmos criptográficos tradicionales sobre los que se sustenta gran parte de la seguridad digital.
+    
+Uno de los conceptos más relevantes dentro de la seguridad informática actual es el denominado \textit{Q-Day} (Quantum Day). Según IBM (2026), este término hace referencia al momento en que exista una computadora cuántica lo suficientemente potente y estable como para romper los principales algoritmos de criptografía de clave pública empleados actualmente, como RSA y ECC. 
+
+Aún no existe una fecha exacta para su llegada, pero numerosas empresas tecnológicas, agencias gubernamentales y organismos internacionales ya se preparan para este escenario mediante la adopción de nuevos estándares criptográficos resistentes a ataques cuánticos. No obstante, según especialistas de IBM, el \textit{Q-Day}, en cierto sentido, ya comenzó; esta afirmación se fundamenta en la estrategia cibernética conocida como \textit{Harvest Now, Decrypt Later} (HNDL).
+
+\begin{itemize}
+    \item \textbf{\textit{Harvest Now, Decrypt Later}} \\
+    Este enfoque consiste en interceptar y almacenar información cifrada, aun cuando no puedan descifrarse con la tecnología disponible. El objetivo es conservar esos datos hasta que existan computadoras cuánticas capaces de romper los algoritmos criptográficos tradicionales. Como consecuencia, información con un largo periodo de confidencialidad  como expedientes médicos, investigaciones científicas, datos financieros, información gubernamental o propiedad intelectual podría verse comprometida en el futuro.
+\end{itemize}
+
+\begin{figure}[H]
+    \raggedright
+    {\bfseries Figura 6}\\
+    \textit{Esquema de la estrategia cibernética \textit{Harvest Now, Decrypt Later (HNDL).}}\\
+    \vspace{0.3cm}
+    \centering
+    \includegraphics[width=0.85\textwidth]{HV.jpg}\\
+    \vspace{0.3cm}
+    \raggedright\small
+    \textit{Nota.} Diagrama esquematica de las cinco fases del ataque \textit{Harvest Now, Decrypt Later}.
+\end{figure}
+
+Frente a la amenaza que representa la computación cuántica para la criptografía de clave pública, una de las principales estrategias de mitigación es la adopción de la Criptografía Post-Cuántica (Post-Quantum Cryptography, PQC). Según el National Institute of Standards and Technology (NIST), la PQC comprende un conjunto de algoritmos criptográficos diseñados para ejecutarse en computadoras clásicas, pero resistentes tanto a ataques de computadoras clásicas como de futuras computadoras cuánticas. Por ello se recomienda que organizaciones e instituciones inicien desde ahora la transición hacia estos nuevos estándares, reemplazando gradualmente algoritmos vulnerables como RSA y ECC, ya que este proceso puede requerir varios años de implementación (NIST, 2024).
 
 \subsubsection{Convergencia tecnológica: Salud e Inteligencia Artificial}
 % Aquí irá el texto sobre Quantum Machine Learning y simulación molecular para enfermedades raras.
@@ -297,7 +321,7 @@ Posteriormente, se aplica una secuencia repetitiva donde un operador oráculo in
 
 \begin{figure}[H]
     \raggedright
-    {\bfseries Figura 6}\\
+    {\bfseries Figura 7}\\
     \textit{Representación del Algoritmo de Grover en un Circuito Cuántico}\\
     \vspace{0.3cm}
     \centering
@@ -343,7 +367,7 @@ La medición colapsa el sistema en un valor que permite deducir el periodo media
 
 \begin{figure}[H]
     \raggedright
-    {\bfseries Figura 7}\\
+    {\bfseries Figura 8}\\
     \textit{Arquitectura del Circuito Cuántico para el Algoritmo de Shor}\\
     \vspace{0.3cm}
     \centering
@@ -402,7 +426,7 @@ Finalmente, el sistema mide el estado para evaluar el coste esperado y delega lo
 
 \begin{figure}[H]
     \raggedright
-    {\bfseries Figura 8}\\
+    {\bfseries Figura 9}\\
     \textit{Estructura de Capas Alternadas en el Algoritmo QAOA}\\
     \vspace{0.3cm}
     \centering
@@ -603,7 +627,7 @@ Sin embargo, a comienzos del siglo XX esta visión comenzó a cambiar con el sur
 Uno de los fundamentos de este cambio fue el Principio de Incertidumbre de Heisenberg, el cual establece que resulta imposible conocer simultáneamente y con precisión absoluta determinadas propiedades físicas de una partícula, como su posición y su momento lineal. Esta limitación no depende del desarrollo tecnológico de los instrumentos de medición, sino que surge directamente de las leyes que gobiernan el mundo cuántico. Como consecuencia, la predicción absoluta propuesta por el determinismo clásico deja de ser válida cuando se estudian sistemas microscópicos, obligando a reemplazar las certezas por modelos probabilísticos (Singh Gill et al., 2025).\\
 
 
-\textbf{Figura 9}\\
+\textbf{Figura 10}\\
 Ecuacion de Incertidumbre de Heisenberg\\
 
 \begin{figure}[h!]
@@ -647,7 +671,7 @@ Un caso relevante es el trabajo de la artista e investigadora Libby Heaney, cons
 Una de sus obras más representativas es \textit{Ent{-}}, una instalación inmersiva presentada en diversas exposiciones internacionales. En este proyecto, Heaney emplea datos generados mediante circuitos cuánticos ejecutados en procesadores de IBM Quantum para producir imágenes, animaciones y efectos visuales que cambian de manera dinámica durante la experiencia del espectador. La obra busca trasladar al ámbito artístico propiedades propias de la mecánica cuántica, como la superposición de estados y el entrelazamiento, permitiendo que el público experimente una representación visual de fenómenos que normalmente solo pueden describirse mediante modelos matemáticos. De esta manera, \textit{Ent{-}} constituye un ejemplo concreto de cómo la computación cuántica puede trascender el ámbito científico y convertirse en una herramienta para explorar nuevas formas de creatividad e interacción entre arte, tecnología y conocimiento (Heaney, 2024).\\
 
 
-\textbf{Figura 10}\\
+\textbf{Figura 11}\\
 Obra inmersiva \textit{Ent{-}} de Libby Heaney
 
 \begin{figure}[h!]
@@ -670,7 +694,7 @@ Un ejemplo es Qubism, una obra compuesta para la London Sinfonietta y presentada
 
 
 
-\textbf{Figura 11}\\
+\textbf{Figura 12}\\
 Portada del álbum qubism de Eduardo Reck Miranda\\
 
 \begin{figure}[H]
@@ -682,7 +706,7 @@ Portada del álbum qubism de Eduardo Reck Miranda\\
 
 
 
-\textbf{Figura 12}\\
+\textbf{Figura 13}\\
 Fragmento de la partitura de Qubism\\
 
 \begin{figure}[H]

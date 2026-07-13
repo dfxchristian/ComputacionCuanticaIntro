@@ -14,8 +14,40 @@
 \usepackage{listings}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{titlesec}
+
 \renewcommand{\lstlistingname}{Código}
 
+%==============================
+% COLORES (Definidos al inicio para evitar errores de compilación)
+%==============================
+\definecolor{azulnoche}{RGB}{0,40,90}
+\definecolor{celesteclaro}{RGB}{224,240,255}
+\definecolor{grisclaro}{RGB}{245,245,245}
+\definecolor{darkgreen}{rgb}{0.533, 0.486, 0.184}
+\definecolor{golden}{RGB}{197,160,89}
+\definecolor{goldford}{RGB}{143,113,54}
+\definecolor{rojo}{RGB}{166,25,46}
+
+%==============================
+% NUMERACIÓN PERSONALIZADA Y FORMATO APA 7
+%==============================
+% 1. Vaciamos el número de sección para que no envíe "I, II, III" al índice
+\renewcommand{\thesection}{} 
+
+% 2. Mantenemos la numeración interna arábiga para las subsecciones (ej. 1.1, 1.2)
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+
+% 3. Configuración visual de títulos en el texto (APA 7 - Centrado y sin número)
+\titleformat{\section}[block]{\normalfont\Large\bfseries\filcenter}{}{0pt}{}
+
+% 4. Ajuste del Índice: Le decimos que el ancho del número de la sección principal es 0
+\setlength{\cftsecnumwidth}{0pt}
+
+%==============================
+% CONFIGURACIÓN DE LISTINGS
+%==============================
 \lstset{
     language=Python,
     basicstyle=\ttfamily\footnotesize,
@@ -47,24 +79,6 @@
 \onehalfspacing
 \setlength{\cftbeforesecskip}{6pt}
 \renewcommand{\contentsname}{Índice}
-
-%==============================
-% COLORES
-%==============================
-\definecolor{azulnoche}{RGB}{0,40,90}
-\definecolor{celesteclaro}{RGB}{224,240,255}
-\definecolor{grisclaro}{RGB}{245,245,245}
-\definecolor{darkgreen}{rgb}{0.533, 0.486, 0.184}
-\definecolor{golden}{RGB}{197,160,89}
-\definecolor{goldford}{RGB}{143,113,54}
-\definecolor{rojo}{RGB}{166,25,46}
-
-%==============================
-% NUMERACIÓN PERSONALIZADA
-%==============================
-\renewcommand{\thesection}{\Roman{section}}
-\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
-\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
 
 \begin{document}
 
@@ -126,7 +140,7 @@ La computación cuántica representa uno de los saltos científicos y tecnológi
 
 Este progreso no es meramente teórico; tiene consecuencias prácticas inmediatas. La inminente amenaza a la criptografía global mediante la factorización eficiente de claves asimétricas, el potencial para el modelado de estructuras moleculares complejas en medicina y la optimización de rutas logísticas son solo algunas de las áreas donde la supremacía cuántica redefinirá las reglas de la industria. En paralelo, esta disrupción ha desatado una carrera geopolítica global por la soberanía tecnológica, obligando a los Estados a replantear sus estrategias de desarrollo frente a una nueva infraestructura crítica.\\
 
-El presente trabajo monográfico tiene como objetivo principal explorar de manera integral la computación cuántica. Para ello, se abordarán sus fundamentos físicos y tecnológicos, y se analizarán sus aplicaciones directas en la ciberseguridad y la salud. A nivel práctico, se demostrará su viabilidad mediante la implementación de una arquitectura de software híbrida, utilizando el \textit{framework} FastAPI y el entorno de IBM Quantum (Qiskit) para ejecutar algoritmos fundamentales (Grover, Shor y QAOA). Finalmente, la investigación trascenderá la ingeniería para evaluar el contraste en la adopción tecnológica entre las potencias globales y el Perú, culminando con un análisis de las profundas implicaciones que el abandono del determinismo y la adopción de la verdadera aleatoriedad cuántica generan en campos como la filosofía, la literatura y la composición musical.
+El presente trabajo monográfico tiene como objetivo principal explorar de manera integral la computación cuántica. Para ello, se abordarán sus fundamentos físicos y tecnológicos, y se analizarán sus aplicaciones directas en la ciberseguridad y la salud. A nivel práctico, se demostrará su viabilidad mediante la implementación de una arquitectura de software híbrida, utilizando el \textit{framework} FastAPI y el entorno de IBM Quantum (Qiskit) para ejecutar algoritmos fundamentales (Grover, Shor y QAOA). Finalmente, la investigación trascenderá la ingeniería para evaluar el contraste en la adopción tecnológica entre las potencias globales y el Perú, culminando con un análisis de las profundas implicaciones que el abandonment del determinismo y la adopción de la verdadera aleatoriedad cuántica generan en campos como la filosofía, la literatura y la composición musical.
 
 % ==============================
 % II. DESARROLLO
@@ -142,7 +156,7 @@ Durante décadas, este paradigma guió el desarrollo informático bajo la premis
 
 El surgimiento formal de la computación cuántica se atribuye a una célebre conferencia dictada por Richard Feynman en 1982, el cual imaginó teóricamente una máquina que pudiera imitar y simular de forma fidedigna la mecánica cuántica utilizando los propios principios de la física cuántica (Y. Ozhigov, 2023).
 Además, esta visión fue formalizada por David Deutsch en 1985 con el concepto de la Máquina de Turing Cuántica, demostrando que tales dispositivos podrían realizar tareas inalcanzables para los sistemas clásicos.
-Por lo cual, el impulso científico global hacia la construcción de este hardware se aceleró críticamente en 1994, cuando Peter Shor demostró matemáticamente que una computadora cuántica podría factorizar números enteros de forma eficiente, comprometiendo de manera directa los criptosistemas de clave pública modernos como la encriptación RSA.\\
+Por lo cual, el impulso científico global hacia la construcción de este hardware se aceleró críticamente en 1994, cuando Peter Shor demostró matemáticamente que una computadora cuántica podría factorizar números enteros de forma eficiente, comprometiendo de manera directo los criptosistemas de clave pública modernos como la encriptación RSA.\\
 
 \begin{figure}[htbp]
     \raggedright
@@ -180,7 +194,7 @@ donde $\alpha$ y $\beta$ son amplitudes de probabilidad complejas que cumplen la
     \textit{Nota.} Tomado de \textit{Efficient Quantum Secure Vector Dominance and Its Applications in Computational Geometry}, por W. Liu, B. Su y F. Sun, 2025, \textit{IEEE Transactions on Computers}, 74(6), pp. 2129–2143 (https://doi.org/10.1109/TC.2025.3557968).
 \end{figure}
 
-Tal y como se puede visualizar en la Figura 2, la esfera de Bloch proporciona una abstracción geométrica indispensable para visualizar el estado de un qubit aislado dentro de un espacio tridimensional. Mientras que un bit clásico está limitado a los polos norte o sur de esta esfera (representando estrictamente los estados discretos $|0\rangle$ y $|1\rangle$), un qubit puede localizarse en cualquier punto sobre la superficie de la esfera. Los ángulos colatitud y longitud de la superficie parametrizan las amplitudes complejas $\alpha$ y $\beta$, lo que evidencia de forma visual cómo el principio de superposición permite la coexistencia e infinitas combinaciones de estados. Esta propiedad geométrica es fundamental para el diseño de algoritmos, ya que las operaciones lógicas cuánticas equivalen analíticamente a rotaciones controladas alrededor de los ejes de este espacio esférico.
+Tal y como se puede visualizar en la Figura 2, la esfera de Bloch proporciona una abstracción geométrica indispensable para visualizar el estado de un qubit aislado dentro de un espacio tridimensional. Mientras que un bit clásico está limitado a los polos norte o sur de esta esfera (representando estrictamente los estados discretos $|0\rangle$ y $|1\rangle$), un qubit puede localizarse en cualquier punto sobre la superficie de la esfera. Los ángulos colatitud y longitud de la superficie parametrizan las amplitudes complejas $\alpha$ y $\beta$, lo que evidencia de forma visual cómo el principio de superposición permite la coexistence e infinitas combinaciones de estados. Esta propiedad geométrica es fundamental para el diseño de algoritmos, ya que las operaciones lógicas cuánticas equivalen analíticamente a rotaciones controladas alrededor de los ejes de este espacio esférico.
 
 \subsubsection{Principios de la mecánica cuántica aplicados a la computación}
 La ventaja de procesamiento radical que exhibe el paradigma cuántico sobre los enfoques digitales clásicos radica en la explotación directa de los postulados fundamentales de la mecánica cuántica. Los principios esenciales integrados en el procesamiento de información son los siguientes:
@@ -275,7 +289,6 @@ El uso de los refrigeradores de dilución es indispensable debido a que la energ
 \subsection{Capítulo II. Aplicaciones Diarias, Limitaciones y Contraste (Perú vs. Mundo)}
 
 \subsubsection{Ciberseguridad y la amenaza cuántica}
-% Aquí irá el texto sobre la estrategia "Harvest Now, Decrypt Later" y el algoritmo de Shor rompiendo RSA.
 La ciberseguridad es uno de los ámbitos donde la computación cuántica tendrá un mayor impacto. Actualmente, la protección de la información en internet depende de sistemas criptográficos que garantizan la confidencialidad de los datos; sin embargo, el avance de la computación cuántica plantea un cambio de paradigma, ya que su capacidad para resolver determinados problemas matemáticos con mayor rapidez podría comprometer los algoritmos criptográficos tradicionales sobre los que se sustenta gran parte de la seguridad digital.
     
 Uno de los conceptos más relevantes dentro de la seguridad informática actual es el denominado \textit{Q-Day} (Quantum Day). Según IBM (2026), este término hace referencia al momento en que exista una computadora cuántica lo suficientemente potente y estable como para romper los principales algoritmos de criptografía de clave pública empleados actualmente, como RSA y ECC. 
@@ -302,7 +315,6 @@ Aún no existe una fecha exacta para su llegada, pero numerosas empresas tecnol�
 Frente a la amenaza que representa la computación cuántica para la criptografía de clave pública, una de las principales estrategias de mitigación es la adopción de la Criptografía Post-Cuántica (Post-Quantum Cryptography, PQC). Según el National Institute of Standards and Technology (NIST), la PQC comprende un conjunto de algoritmos criptográficos diseñados para ejecutarse en computadoras clásicas, pero resistentes tanto a ataques de computadoras clásicas como de futuras computadoras cuánticas. Por ello se recomienda que organizaciones e instituciones inicien desde ahora la transición hacia estos nuevos estándares, reemplazando gradualmente algoritmos vulnerables como RSA y ECC, ya que este proceso puede requerir varios años de implementación (NIST, 2024).
 
 \subsubsection{Convergencia tecnológica: Salud e Inteligencia Artificial}
-% Aquí irá el texto sobre Quantum Machine Learning y simulación molecular para enfermedades raras.
 Uno de los campos más prometedores para la computación cuántica es la medicina. Muchas enfermedades están relacionadas con procesos moleculares extremadamente complejos cuya simulación supera la capacidad de las computadoras tradicionales. Gracias a los qubits y a su capacidad para representar múltiples estados simultáneamente, las computadoras cuánticas pueden simular interacciones moleculares y predecir cómo ciertos fármacos interactúan en ellos, permitiendo así identificar fármacos prometedores para el desarrollo de medicamentos. Empresas como Accenture Labs, ya aplican algoritmos cuánticos para acelerar el descubrimiento de tratamientos para enfermedades neurológicas como el Alzheimer, el Parkinson o la enfermedad de Lou Gehnrin, así como un estudio del ARNm de las vacunas.\\
 
 Otro punto a destacar es el diagnóstico médico, ya que con la computación  cuántica tiene la capacidad de mejorar el reconocimiento de patrones y el análisis de datos para la detección temprana de enfermedades. Los algoritmos cuánticos, como las redes cuánticas y las máquinas de vectores de soporte cuántico, pueden procesar conjuntos de datos médicos complejos de manera más eficiente, identificando patrones inusuales y diagnosticando enfermedades como el cáncer o trastornos neurodegenerativos. Asimismo, permite el análisis de interacciones genéticas complejas para identificar mutaciones genéticas que contribuyen al desarrollo de ciertas enfermedades hereditarias. Cambridge Quantum Computing es una de las empresas que ha empezado a utilizar esta tecnología cuántica en la investigación genética para estudiar el mapeo de la diversidad del ADN.
@@ -319,7 +331,7 @@ Otro punto a destacar es el diagnóstico médico, ya que con la computación  cu
 \end{figure}
 Por otro lado, los modelos cuánticos ofrecen la capacidad de optimizar los planes de tratamiento mediante el procesamiento de datos clínicos del paciente, ya sea información genómica, historial médico o factores ambientales que pueda afectar; y, de esta manera, adaptar tratamientos que sean específicos para la composición genética del individuo, así como un enfoque personalizado para mejorar los resultados de los tratamientos dirigidos.\\  
 
-A esto podemos sumarle la integración de la IA, la cual tiene el potencial de mejorar significativamente las capacidades de los modelos de IA en la atención médica ya que, gracias a esto, podemos procesar grandes conjuntos de datos de manera más eficiente y de esta manera potenciar el análisis predictivo de la atención médica, además de optimizar los planes de tratamiento y ofrecer información en tiempo real sobre las respuestas de los pacientes a las terapias. Empresas como IBM, Google y Rigetti Computing están a la vanguardia de dicha investigación para impulsar avances en la salud.\\
+A esto podemos sumarle la integración de la IA, la cual tiene el potencial de mejorar significativamente las capacidades de los modelos de IA en la atención médica ya que, gracias a esto, podemos procesar grandes conjuntos de datos de manera más eficiente y de esta manera potenciar el análisis predictivo de la atención médica, además de optimizar los planes de tratamiento y ofrecer información en tiempo real sobre las respuestas de los pacientes a las terapias. Empresas como IBM, Google and Rigetti Computing están a la vanguardia de dicha investigación para impulsar avances en la salud.\\
 
 En este contexto surge el Quantum Machine Learning (QML), una disciplina que combina la computación cuántica con las técnicas de aprendizaje automático para explorar nuevas formas de procesar información y resolver problemas de inteligencia artificial. A diferencia de la idea de reemplazar los modelos clásicos, el QML busca complementar su funcionamiento mediante el uso de circuitos cuánticos en tareas específicas, como la clasificación, el reconocimiento de patrones, la optimización y el análisis de grandes volúmenes de datos. Para ello, integra algoritmos de aprendizaje supervisado, que utilizan datos previamente etiquetados para entrenar modelos predictivos, y de aprendizaje no supervisado, orientados a descubrir patrones y relaciones ocultas en datos sin clasificar. No obstante, de acuerdo con IBM, esta disciplina aún se encuentra en una etapa de investigación, por lo que el principal desafío consiste en identificar aplicaciones donde la computación cuántica ofrezca una ventaja real sobre los métodos tradicionales y permita el desarrollo de sistemas híbridos que combinan las fortalezas de la computación clásica y cuántica (IBM Quantum Learning, 2025).\\
 
@@ -335,7 +347,6 @@ En este contexto surge el Quantum Machine Learning (QML), una disciplina que com
 \end{figure}
 
 \subsubsection{Limitaciones físicas y el desafío energético}
-% Aquí irá el texto sobre el reto del frío extremo (-273 ºC), los criostatos y la escasez de helio.
 Aunque la computación cuántica promete revolucionar numerosos campos científicos y tecnológicos, su desarrollo todavía enfrenta importantes limitaciones físicas e ingenieriles. La construcción y operación de una computadora cuántica requiere condiciones extremadamente controladas para mantener la estabilidad de los qubits y minimizar los errores durante los cálculos.
 
 \begin{itemize}
@@ -347,12 +358,11 @@ Aunque la computación cuántica promete revolucionar numerosos campos científi
     El mantenimiento de temperaturas extremadamente bajas constituye otro de los principales desafíos de la computación cuántica. Los \textit{qubits} son altamente sensibles a cualquier perturbación del entorno, por lo que deben operar a temperaturas cercanas al cero absoluto ($-273,15\,^{\circ}\mathrm{C}$) para conservar sus propiedades cuánticas y minimizar los errores durante los cálculos. Para alcanzar estas condiciones, se utilizan refrigeradores de dilución, que permite enfriar gradualmente el procesador cuántico hasta alcanzar temperaturas del orden de los milikelvin, incluso inferiores a las del espacio exterior.\\
     Junto con esto, la disponibilidad de helio constituye otro factor crítico para la computación cuántica. Este gas es indispensable para los sistemas criogénicos que enfrían los procesadores cuánticos, pero su suministro es limitado y puede verse afectado por conflictos geopolíticos. El conflicto entre Estados Unidos e Irán generó preocupación por posibles interrupciones en las cadenas de suministro de helio, ya que en Oriente Medio es donde se concentran importantes instalaciones de producción y exportación. Esta incertidumbre podría incrementar los costos y dificultar el acceso al helio-3, por lo que se han impulsado esfuerzos continuos para mejorar las cadenas de suministro, incluyendo la minería lunar y las tecnologías de separación avanzadas.
     \item \textbf{Corrección cuántica de errores}\\
-    Debido a que los qubits son mucho más sensibles al ruido y la decoherencia que los bits de una computadora clásica, los errores durante los cálculos son frecuentes. Para reducir este problema, la información se codifica en qubits lógicos, los cuales se construyen agrupando múltiples qubits físicos que trabajan de forma redundante para detectar y corregir errores.En 2024, IBM dio a conocer un nuevo método de corrección cuántica de errores con una eficiencia diez veces superior a la de los enfoques anteriores. Si bien aún persisten retos técnicos para su implementación, este avance acerca la posibilidad de construir sistemas cuánticos capaces de rea
-    \item \textbf{Disponibilidad insufienciente de software}\\
+    Due to the fact that qubits are much more sensitive to noise and decoherence than classical computer bits, errors are frequent. To mitigate this issue, information is encoded in logical qubits, which are constructed by grouping multiple physical qubits working redundantly to detect and correct errors. En 2024, IBM dio a conocer un nuevo método de corrección cuántica de errores con una eficiencia diez veces superior a la de los enfoques anteriores. Si bien aún persisten retos técnicos para su implementación, este avance acerca la posibilidad de construir sistemas cuánticos capaces de rea
+    \item \textbf{Disponibilidad insuficiente de software}\\
     La disponibilidad limitada de software es otro obstáculo para la adopción de la computación cuántica. Actualmente existen pocos algoritmos y aplicaciones capaces de aprovechar eficazmente el hardware cuántico, además de que el desarrollo requiere el uso de herramientas y lenguajes especializados, como Qiskit o Cirq. A ello se suma la falta de compatibilidad entre las plataformas de distintos fabricantes, lo que dificulta la portabilidad de los programas cuánticos. Para afrontar este problema, organizaciones como la QIR Alliance trabajan en el desarrollo de estándares e interfaces comunes que permitan crear software más interoperable y faciliten su implementación en diferentes sistemas cuánticos
 \end{itemize}
 \subsubsection{Contraste geopolítico: Hegemonía global frente al reto de adopción en el Perú}
-% Aquí irá el contraste entre potencias mundiales (EE. UU., China, Europa) y la democratización vía Cloud Computing en Perú.
 El desarrollo de la computación cuántica ha trascendido de un nivel experimental a consolidarse como una prioridad estratégica y un factor determinante en la competitividad económica a nivel global. En la actualidad, esta carrera tecnológica se encuentra liderada por tres grandes bloques que impulsan iniciativas gubernamentales de gran envergadura. Por un lado, Estados Unidos articula sus esfuerzos a través de la National Quantum Initiative, mientras que China fundamenta gran parte de su progreso en las investigaciones desarrolladas por la Universidad de Ciencia y Tecnología de China (USTC). Por su parte, la Unión Europea ha optado por coordinar su capacidad investigativa e industrial mediante la plataforma EuroHPC de la Comisión Europea. \\
 
 En este contexto geopolítico, Europa está realizando un esfuerzo colaborativo significativo para asegurar la provisión y el despliegue de infraestructura física de vanguardia. Gracias a diversas iniciativas continentales, se ha logrado la instalación de seis ordenadores cuánticos en territorio europeo, además de la cofinanciación de dos equipos adicionales. Estas supercomputadoras, distribuidas de manera estratégica en países como España, Italia, Polonia, Francia, Alemania y la República Checa, tienen como objetivo fundamental dotar a las universidades y centros de investigación de las herramientas necesarias para acelerar el desarrollo tecnológico regional. Dentro de este ecosistema continental, España ha dado pasos decisivos que la posicionan como un actor de referencia; en su territorio ya operan sistemas modulares avanzados y destaca especialmente el proyecto Basque Quantum, una asociación estratégica impulsada junto a las tres diputaciones forales del País Vasco que cuenta con una inversión comprometida de 120 millones de euros hasta el año 2028 (BBVA, 2025).\\
@@ -666,7 +676,9 @@ La implementación se estructura bajo un diseño tolerante a fallos que opera en
 
 En primer lugar, se establece la capa de abstracción de la API mediante el uso del framework FastAPI y los modelos de validación estructural de Pydantic, configurando una interfaz RESTful capaz de admitir parámetros clásicos de entrada de forma tipada. En segundo lugar, se ejecuta la construcción dinámica del circuito cuántico en memoria empleando la clase QuantumCircuit de Qiskit, aplicando las instrucciones unitarias correspondientes a las transformaciones lógicas deseadas. En tercer lugar, se activa el enrutamiento hacia la nube de IBM Cloud a través del servicio QiskitRuntimeService, autenticando las credenciales y aislando el coprocesador físico de hardware que certifique la menor cola de peticiones activas.\\
 
-En cuarto lugar, el sistema procesa la transpilación del circuito abstracto mediante un gestor de pases preestablecido, descomponiendo y adaptando las compuertas ideales a la topología nativa de emparejamiento físico del chip cuántico seleccionado. En quinto lugar, se despliega un mecanismo de degradación elegante gobernado por un bloque de control de excepciones, el cual conmuta la orquestación automáticamente hacia el entorno de simulación local AerSimulator ante cualquier interrupción de red o saturación de tokens en la plataforma externa, asegurando la continuidad del servicio de software.%-------------------------------------------------
+En cuarto lugar, el sistema procesa la transpilación del circuito abstracto mediante un gestor de pases preestablecido, descomponiendo y adaptando las compuertas ideales a la topología nativa de emparejamiento físico del chip cuántico seleccionado. En quinto lugar, se despliega un mecanismo de degradación elegante gobernado por un bloque de control de excepciones, el cual conmuta la orquestación automáticamente hacia el entorno de simulación local AerSimulator ante cualquier interrupción de red o saturación de tokens en la plataforma externa, asegurando la continuidad del servicio de software.
+
+%-------------------------------------------------
 \subsection{Capítulo IV. Implicaciones Multidisciplinarias}
 
 \subsubsection{El cambio de paradigma filosófico y el fin del determinismo}
@@ -690,7 +702,7 @@ Ecuacion de Incertidumbre de Heisenberg\\
     \label{fig:incertidumbre}
 \end{figure}
 
-Desde una perspectiva filosófica, este descubrimiento transformó la concepción tradicional del conocimiento científico. Mientras que la física clásica asume que la realidad existe de forma objetiva e independiente del observador, la mecánica cuántica introdujo la posibilidad de que el proceso de medición influya directamente sobre el sistema observado. Esta idea fue desarrollada principalmente mediante la Interpretación de Copenhague, la cual sostiene que un sistema cuántico permanece en una superposición de estados hasta que se realiza una observación, momento en el cual la función de onda colapsa hacia un único resultado posible. Aunque esta interpretación continúa siendo objeto de debate, constituye uno de los fundamentos conceptuales sobre los cuales se desarrolla actualmente la computación cuántica (TELOS, 2026).\\	
+Desde una perspectiva filosófica, este descubrimiento transformó la concepción tradicional del conocimiento científico. Mientras que la física clásica asume que la realidad existe de forma objetiva e independiente del observador, la mecánica cuántica introdujo la posibilidad de que el proceso de medición influya directamente sobre el sistema observado. Esta idea fue desarrollada principalmente mediante la Interpretación de Copenhague, la cual sostiene que un sistema cuántico permanece en una superposición de estados hasta que se realiza una observación, momento en el cual la función de onda colapsa hacia un único resultado posible. Aunque esta interpretación continúa siendo objeto de debate, constituye uno de los fundamentos conceptuales sobre los cuales se desarrolla actualmente la computación cuántica (TELOS, 2026).\\ 
 
 También se destaca que este cambio de paradigma no solo afecta a la física, sino también a la filosofía, la educación y las ciencias sociales. El físico italiano Carlo Rovelli explica que la revolución cuántica demuestra que el conocimiento científico no consiste en descubrir una realidad completamente absoluta, sino en comprender las relaciones que se establecen entre los sistemas físicos y quienes interactúan con ellos. Desde esta perspectiva, la incertidumbre deja de interpretarse como un obstáculo para convertirse en una característica esencial de la naturaleza, modificando profundamente la manera en que la humanidad comprende conceptos como realidad, objetividad y verdad (TELOS, 2026).\\
 
@@ -784,14 +796,20 @@ En el contexto geopolítico y económico, la democratización tecnológica se pr
 
 \vspace{0.4cm}
 Finalmente, la revolución cuántica demuestra ser un fenómeno que trasciende las fronteras de la física y la ingeniería para impactar profundamente la cultura humana. El abandono del determinismo clásico en favor de un universo fundamentado en probabilidades ha transformado la epistemología contemporánea. Esta concepción alimenta narrativas literarias y existencialistas, como la interpretación de los muchos mundos de Everett, y habilita nuevas formas de expresión estética. Mediante procesos como la sonificación canónica, la verdadera aleatoriedad subatómica se convierte en un insumo genuino para la creación de arte y música generativa. De este modo, la presente investigación evidencia que la ciencia y las humanidades convergen inexorablemente en la exploración de las leyes fundamentales que rigen la realidad.
+
 % ==============================
 % IV. REFERENCIAS
 % ==============================
 \newpage
-\section{Referencias Bibliográficas}
-\vspace{0.3cm}
+\section*{\centering Referencias}
+\addcontentsline{toc}{section}{Referencias}
 
-\begin{hangparas}{1.5em}{1}
+% Forzamos que los enlaces (URLs) sean de color negro en esta sección
+\hypersetup{urlcolor=black}
+
+\doublespacing
+\begin{hangparas}{1.27cm}{1}
+
 BBVA. (2025). \textit{Así es el mapa mundial de la computación cuántica}. BBVA Noticias. \url{https://www.bbva.com/es/innovacion/asi-es-el-mapa-mundial-de-la-computacion-cuantica/}
 
 Borges, J. L. (2018). \textit{Ficciones}. Penguin Random House Grupo Editorial.
@@ -845,6 +863,5 @@ Singh Gill, S., Cetinkaya, O., Marrone, S., Caudino, D., Haunschild, D., Schlote
 Williams, L. (2026). \textit{US Iran war: Will helium shortages risk major disruption to quantum computing companies?} Verdict. \url{https://www.verdict.co.uk/us-iran-war-will-helium-shortages-risk-major-disruption-to-quantum-computing-companies/}
 
 \end{hangparas}
-\end{document}
 
-```
+\end{document}

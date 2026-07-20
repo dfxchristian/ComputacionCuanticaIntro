@@ -66,10 +66,16 @@
              {ñ}{{\~n}}1 {Ñ}{{\~N}}1
 }
 
+% ==============================
+% COLOR DE ENLACES: solo las URLs (referencias, notas de figuras) van en azul.
+% Los enlaces internos (índice, tabla de contenidos) van en negro para no
+% confundirse con hipervínculos externos.
+% ==============================
 \hypersetup{
     colorlinks=true,
-    linkcolor=blue,
-    urlcolor=blue
+    linkcolor=black,
+    urlcolor=blue,
+    citecolor=black
 }
 
 %==============================
@@ -127,10 +133,33 @@ Fernandez Curas, Christian Jair \\
 \end{titlepage}
 
 % ==============================
+% CONTROL DE PAGINACIÓN
+% A partir de aquí (portada ya pasó) no se muestra número de página.
+% La numeración arábiga real (1, 2, 3...) recién comienza en "Introducción".
+% ==============================
+\pagenumbering{gobble}
+
+% ==============================
+% RESUMEN
+% ==============================
+\section*{Resumen}
+\addcontentsline{toc}{section}{Resumen}
+
+La presente monografía analiza de manera integral la computación cuántica, desde sus fundamentos físicos y matemáticos hasta sus aplicaciones prácticas y sus implicaciones culturales. En primer lugar, se explican los principios que sustentan esta tecnología —superposición, entrelazamiento e interferencia— así como las principales plataformas de hardware cuántico actualmente en desarrollo. En segundo lugar, se examinan sus aplicaciones en la ciberseguridad, particularmente frente a la amenaza que representa el algoritmo de Shor para la criptografía de clave pública, y en el campo de la salud, mediante la simulación molecular y el aprendizaje automático cuántico. En tercer lugar, se presenta la implementación de un sistema híbrido desarrollado con FastAPI y el SDK Qiskit de IBM, que ejecuta los algoritmos de Grover, Shor y QAOA sobre hardware cuántico real, evidenciando la viabilidad técnica de integrar esta tecnología en arquitecturas de software contemporáneas. Finalmente, se contrasta el desarrollo tecnológico entre las principales potencias mundiales y el estado actual de adopción en el Perú, y se reflexiona sobre las implicaciones filosóficas, literarias y artísticas del abandono del determinismo clásico. Se concluye que la computación cuántica constituye una realidad técnica en plena expansión, con retos de escalabilidad e infraestructura aún vigentes, pero con un potencial transformador que trasciende el ámbito científico.
+
+\vspace{0.5cm}
+
+\newpage
+
+% ==============================
 % ÍNDICE
 % ==============================
 \tableofcontents
 \newpage
+
+% A partir de aquí empieza la numeración visible de páginas, comenzando en 1.
+\pagenumbering{arabic}
+\setcounter{page}{1}
 
 % ==============================
 % I. INTRODUCCIÓN
@@ -142,9 +171,29 @@ Este progreso no es meramente teórico; tiene consecuencias prácticas inmediata
 
 El presente trabajo monográfico tiene como objetivo principal explorar de manera integral la computación cuántica. Para ello, se abordarán sus fundamentos físicos y tecnológicos, y se analizarán sus aplicaciones directas en la ciberseguridad y la salud. A nivel práctico, se demostrará su viabilidad mediante la implementación de una arquitectura de software híbrida, utilizando el \textit{framework} FastAPI y el entorno de IBM Quantum (Qiskit) para ejecutar algoritmos fundamentales (Grover, Shor y QAOA). Finalmente, la investigación trascenderá la ingeniería para evaluar el contraste en la adopción tecnológica entre las potencias globales y el Perú, culminando con un análisis de las profundas implicaciones que el abandonment del determinismo y la adopción de la verdadera aleatoriedad cuántica generan en campos como la filosofía, la literatura y la composición musical.
 
+\subsection*{Objetivos}
+\addcontentsline{toc}{subsection}{Objetivos}
+
+\subsubsection*{Objetivo general}
+Analizar de manera integral los fundamentos teóricos, las aplicaciones prácticas y las implicaciones multidisciplinarias de la computación cuántica, evidenciando su viabilidad técnica mediante la implementación de una arquitectura de software híbrida.
+
+\subsubsection*{Objetivos específicos}
+\begin{itemize}
+    \item Explicar los principios físicos y matemáticos que sustentan la computación cuántica, así como las principales tecnologías de hardware empleadas para su implementación.
+    \item Analizar el impacto de la computación cuántica en la ciberseguridad y en el campo de la salud, identificando las principales oportunidades y amenazas asociadas.
+    \item Desarrollar e implementar una arquitectura híbrida basada en FastAPI y Qiskit que permita ejecutar los algoritmos de Grover, Shor y QAOA sobre hardware cuántico real.
+    \item Contrastar el nivel de desarrollo y adopción de la computación cuántica entre las principales potencias tecnológicas y el estado actual del Perú.
+    \item Reflexionar sobre las implicaciones filosóficas, literarias y artísticas derivadas del cambio de paradigma del determinismo clásico hacia la probabilidad cuántica.
+\end{itemize}
+
+\subsection*{Justificación}
+\addcontentsline{toc}{subsection}{Justificación}
+La relevancia de esta investigación radica en que la computación cuántica ha dejado de ser un campo exclusivamente teórico para convertirse en una tecnología con aplicaciones tangibles y una creciente influencia geopolítica, económica y social. Comprender sus fundamentos resulta indispensable para anticipar los riesgos que representa para la seguridad de la información actual, particularmente frente a estrategias como \textit{Harvest Now, Decrypt Later}, así como para identificar las oportunidades que ofrece en sectores estratégicos como la salud y la optimización de procesos. Asimismo, en un contexto en el que países como el Perú se encuentran en una etapa inicial de adopción de esta tecnología, resulta pertinente generar conocimiento accesible que contribuya a la alfabetización cuántica y a la formación de talento especializado. Finalmente, esta monografía se justifica también desde una perspectiva humanística, al evidenciar cómo un avance científico de esta magnitud trasciende el ámbito técnico e impacta directamente en la filosofía, la literatura y el arte contemporáneo.
+
 % ==============================
 % II. DESARROLLO
 % ==============================
+\setcounter{section}{0}
 \section{Desarrollo}
 
 %-------------------------------------------------
@@ -584,8 +633,8 @@ def safe_chr(val):
         return "?"
 
 # Credenciales de IBM Quantum Cloud
-API_KEY_CLOUD = "2XMZvFEBM3saI3RhSbZQPkVxMaTGdFhzwFOifZjGS7Gu" 
-CRN_INSTANCIA = "crn:v1:bluemix:public:quantum-computing:us-east:a/afff77ba7c6c41688a65aa609d9f7891:5aed1a55-5288-4821-936f-3b5ac997ec86::"
+API_KEY_CLOUD = "TU_API_KEY_AQUI" 
+CRN_INSTANCIA = "TU_CRN_DE_INSTANCIA_AQUI"
 
 @app.post("/api/ejecutar-caso")
 async def ejecutar_caso(req: CasoRequest):
@@ -748,19 +797,14 @@ Obra inmersiva \textit{Ent{-}} de Libby Heaney
     \label{fig:libby}
 \end{figure}
 
+
+
+
 La influencia de estas tecnologías también ha comenzado a observarse en el ámbito de la composición musical. Diversos proyectos de investigación exploran la utilización de algoritmos cuánticos para asistir a compositores en la generación de nuevas estructuras armónicas y patrones rítmicos. En lugar de reemplazar la creatividad humana, estos sistemas funcionan como herramientas de apoyo que amplían el espacio de exploración musical mediante la incorporación de procesos probabilísticos imposibles de reproducir exactamente con sistemas clásicos. De esta manera, la computación cuántica se presenta como un complemento para el proceso creativo, permitiendo desarrollar composiciones con un mayor grado de diversidad y originalidad (Miranda, 2022).\\
 
 Uno de los casos más representativos corresponde al proyecto Quantum Music, dirigido por el compositor e investigador Eduardo Reck Miranda, pionero en el estudio de la interacción entre computación cuántica y creación musical. En este proyecto se desarrollan algoritmos capaces de utilizar circuitos cuánticos para generar información musical que posteriormente es interpretada por instrumentos tradicionales o sistemas digitales. En lugar de producir una obra completamente automática, los resultados obtenidos mediante las mediciones de qubits sirven como punto de partida para la composición, proporcionando secuencias melódicas, patrones rítmicos y variaciones armónicas que el compositor puede desarrollar y adaptar. Este enfoque demuestra que la computación cuántica no pretende sustituir la creatividad humana, sino ampliar las posibilidades de exploración musical mediante procesos inspirados en la naturaleza probabilística de la mecánica cuántica (Miranda, 2022).\\
 
 Un ejemplo es \textit{Qubism}, una obra compuesta para la London Sinfonietta y presentada por Miranda en 2023. Durante la interpretación, el sistema QuPoly escucha fragmentos ejecutados por los músicos y los transforma en algoritmos cuánticos que son enviados a un computador cuántico a través de la nube. Tras procesar la información, el computador devuelve resultados que se convierten en nuevas respuestas musicales, las cuales son incorporadas a la interpretación en tiempo real. De esta manera, la composición establece un diálogo entre el intérprete humano y el computador cuántico, donde este último no reemplaza al compositor ni a los músicos, sino que participa como un colaborador creativo capaz de generar nuevas posibilidades sonoras a partir de las propiedades de los qubits. Este proyecto constituye uno de los primeros ejemplos documentados del uso de hardware cuántico dentro de una composición musical presentada en un escenario profesional, evidenciando el potencial de la computación cuántica para ampliar los procesos de creación artística (Miranda, 2024).\\
-
-
-
-
-
-
-
-
 
 \textbf{Figura 14}\\
 Portada del álbum qubism de Eduardo Reck Miranda\\
@@ -805,9 +849,6 @@ Finalmente, la revolución cuántica demuestra ser un fenómeno que trasciende l
 \newpage
 \section*{\centering Referencias}
 \addcontentsline{toc}{section}{Referencias}
-
-% Forzamos que los enlaces (URLs) sean de color negro en esta sección
-\hypersetup{urlcolor=black}
 
 \doublespacing
 \begin{hangparas}{1.27cm}{1}
